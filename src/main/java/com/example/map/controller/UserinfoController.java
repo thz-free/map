@@ -4,9 +4,13 @@ package com.example.map.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.example.map.domain.Userinfo;
 import com.example.map.service.UserinfoService;
+import com.example.map.utils.WXCore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 @RestController
@@ -15,80 +19,74 @@ public class UserinfoController {
     private UserinfoService userinfoService;
 
     /**
-     * 存储用户信息
-     * @param jsonParam
+     * 获取sessionKey
+     * @param code
      * @return
      */
-    @ResponseBody
-    @RequestMapping(value = "/setUserinfo",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public String setUserinfo(@RequestBody JSONObject jsonParam){
-
-//        System.out.println("用户信息："+jsonParam.toJSONString());
-//        System.out.println("username:"+jsonParam.get("username"));
-        JSONObject result = new JSONObject();
-        Userinfo userinfo = new Userinfo();
-        userinfo.setUsername(jsonParam.getString("username"));
-        userinfo.setIsDainaString(jsonParam.getString("isDaina"));
-        userinfo.setStudentCode(jsonParam.getString("studentCode"));
-        userinfo.setUserphone(jsonParam.getString("userphone"));
+    public String getSessionKey(String appid,String secret,String code){
+        String sessionKey = null;
         try {
-            userinfoService.setUserinfo(userinfo);
-        } catch (Exception e) {
-            result.put("msg","exist");
-            result.put("method", "request");
-            System.out.println(e.getMessage());
-            System.out.println("用户已存在！");
-            return result.toJSONString();
-        }
-
-        // 将获取的json数据封装一层，然后在给返回
-        result.put("msg", "ok");
-        result.put("method", "request");
-        return result.toJSONString();
-    }
-
-    /**
-     * 获取用户信息
-     * @return
-     */
-    @RequestMapping(value = "/getUserinfo",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public JSONObject getUserinfo(){
-        JSONObject jsonObject = new JSONObject();
-        try {
-            List<Userinfo> userinfoList = userinfoService.getUserinfo();
-            jsonObject.put("userinfoList",userinfoList);
-//            System.out.println(userinfoList);
+            String url = "https://api.weixin.qq.com/sns/jscode2session?appid="+appid+"&secret="+secret+"&js_code="+code+"&grant_type=authorization_code";
+            RestTemplate restTemplate = new RestTemplate();
+            String forObject = restTemplate.getForObject(url, String.class);
+            JSONObject jsonObject = JSONObject.parseObject(forObject);  //字符串转成json
+            System.out.println(jsonObject.getString("session_key"));
+            System.out.println(jsonObject);
+            sessionKey = jsonObject.getString("session_key");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return jsonObject;
+        return sessionKey;
     }
 
     /**
-     * 更改用户信息
-     * @param jsonParam
+     * 授权操作,存入数据
+     * @param jsonObject
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/updateUserinfo",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public String updateUserinfo(@RequestBody JSONObject jsonParam){
-        Userinfo userinfo = new Userinfo();
-        JSONObject result = new JSONObject();
-//        System.out.println("用户信息："+jsonParam.toJSONString());
-        userinfo.setUsername(jsonParam.getString("username"));
-        userinfo.setIsDainaString(jsonParam.getString("isDaina"));
-        userinfo.setStudentCode(jsonParam.getString("studentCode"));
-        userinfo.setUserphone(jsonParam.getString("userphone"));
-        userinfo.setId((Integer) jsonParam.get("id"));
-//        System.out.println(userinfo);
+    @RequestMapping(value = "/authorizeLogin",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public String authorizeLogin(@RequestBody JSONObject jsonObject){
+        //appid,encryptedData,code,secret(sessionKey),iv
+        //存入的值：wxphone,isregister,grabcounts,putcounts,isdaina
+        //System.out.println(jsonObject.toJSONString());
+        String appid = jsonObject.getString("appid");
+        String encryptedData = jsonObject.getString("encryptedData");
+        String code = jsonObject.getString("code");
+        String secret = jsonObject.getString("secret");
+        String iv = jsonObject.getString("iv");
+
+        JSONObject resultJson = new JSONObject();
+
+        //1.获取sessionKey
+        String sessionKey = getSessionKey(appid,secret,code);
+        //2.获取手机号
+        //解密获取结果
         try {
-            userinfoService.updateUserinfo(userinfo);
-            result.put("msg", "ok");
-        }catch (Exception e) {
-            result.put("msg", "fail");
+            String result = WXCore.decrypt(appid,encryptedData,sessionKey,iv);
+            JSONObject parseObject = JSONObject.parseObject(result);
+            //System.out.println(parseObject);
+            //防止空指针异常
+            if(parseObject!=null) {
+                //获取的该手机号并不一定为非空，所以后面需要判断phone是否为null或者""
+                String wxphone = parseObject.getString("phoneNumber");
+                //System.out.println(wxphone);
+                if(userinfoService.isResgister(wxphone)) {
+                    resultJson.put("msg", "ok");
+                } else {
+                    userinfoService.authorizeLogin(new Userinfo(wxphone, 0, 0, 0, 0));
+                    resultJson.put("msg", "ok");
+                }
+            }else {
+                resultJson.put("msg", "fail");
+                return null;
+            }
+        }catch (Exception e){
+            resultJson.put("msg", "fail");
             e.printStackTrace();
         }
-        result.put("method", "request");
-        return result.toJSONString();
+        return resultJson.toJSONString();
     }
+
+
 }

@@ -9,10 +9,8 @@ import java.util.List;
 @Repository
 @Mapper
 public interface IUserinfoDao {
-    //存储用户信息
-    public void setUserinfo(Userinfo userinfo) throws Exception;
-    //获取用户信息
-    public List<Userinfo> getUserinfo() throws Exception;
-    //更改用户信息
-    public void updateUserinfo(Userinfo userinfo) throws Exception;
+    //授权时存储数据
+    void authorizeLogin(Userinfo userinfo) throws Exception;
+    //判断是否注册
+    Userinfo isRegister(String wxphone) throws Exception;
 }

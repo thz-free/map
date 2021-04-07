@@ -33,7 +33,10 @@ Page({//注册当前页面
     })
   },
   onLoad() {
-    console.log(this.data)
+    
+  },
+  onShow(){
+    //console.log(this.data)
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
@@ -47,7 +50,7 @@ Page({//注册当前页面
         if (haha == "getPhoneNumber:ok") {//授权了，可以获取用户信息了
           wx.getUserInfo({
             success: (e) => {
-              console.log(e)
+              //console.log(e)
             }
           })
         }else{//未授权，跳到授权页面

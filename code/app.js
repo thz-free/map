@@ -1,4 +1,6 @@
 // app.js
+const secret = "d51a1533fa18e8b33534ef73a326fa4e";
+const appid = 'wx68fd34d6b27b8e78';
 import requestUrl from './utils/util.js'
 App({//小程序注册
   onLaunch() {
@@ -9,7 +11,7 @@ App({//小程序注册
     // 登录
     wx.login({
       success: res => {
-        
+        //console.log("code:",res.code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if(res.code){
           requestUrl.requestUrl({
@@ -33,8 +35,8 @@ App({//小程序注册
   globalData: {
     userInfo: "",//用户信息
     openId:"",//登录用户的唯一标识
-    appid: 'wx242f88b4c25643c2',//appid  
-    secret: 'e0dassda466b98dd75bac9ad5b760218075b0577def2424234209bwXXXXXXXXXXXXXX',//secret秘钥
+    appid: appid,//appid  
+    secret: secret,//secret秘钥
   },
   onHide:function(){//小程序退出时触发的事件
     console.log("小程序完全退出了")

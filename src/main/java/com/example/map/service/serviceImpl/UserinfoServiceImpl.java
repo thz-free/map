@@ -14,38 +14,26 @@ public class UserinfoServiceImpl implements UserinfoService {
     @Autowired
     private IUserinfoDao iUserinfoDao;
 
+
     /**
-     * 存储用户信息
+     * 授权存储信息
      * @param userinfo
      * @throws Exception
      */
     @Override
-    public void setUserinfo(Userinfo userinfo) throws Exception {
-        iUserinfoDao.setUserinfo(userinfo);
-//        System.out.println(userinfo);
+    public void authorizeLogin(Userinfo userinfo) throws Exception {
+        iUserinfoDao.authorizeLogin(userinfo);
+        System.out.println("注册成功");
     }
 
     /**
-     * 获取用户信息
+     * 判断是否注册
+     * @param wxphone
      * @return
      * @throws Exception
      */
     @Override
-    public List<Userinfo> getUserinfo() throws Exception {
-        List<Userinfo> userinfoList = iUserinfoDao.getUserinfo();
-        return userinfoList;
+    public boolean isResgister(String wxphone) throws Exception {
+        return iUserinfoDao.isRegister(wxphone) == null ? false : true;
     }
-
-    /**
-     * 更新用户数据
-     * @param userinfo
-     * @throws Exception
-     */
-    @Override
-    public void updateUserinfo(Userinfo userinfo) throws Exception {
-        iUserinfoDao.updateUserinfo(userinfo);
-        System.out.println("修改成功");
-    }
-
-
 }

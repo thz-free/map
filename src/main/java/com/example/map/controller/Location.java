@@ -14,8 +14,7 @@ public class Location {
         JSONObject result = new JSONObject();
         result.put("msg", "ok");
         result.put("method", "request");
-        result.put("data", "latitude: 30.22, longitude: 40.11" +
-                "` ");
+        result.put("data", "latitude: 30.22, longitude: 40.11");
         return result.toJSONString();
     }
 }

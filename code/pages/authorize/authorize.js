@@ -1,4 +1,5 @@
 // pages/authorize/authorize.js
+const config = require("../../Config/config");
 import requestUrl from '../../utils/util.js'
 var globalOpenId = getApp().globalData.openId;
 Page({
@@ -17,105 +18,38 @@ Page({
   onLoad: function (options) {
 
   },
-// 微信授权获取手机号弹窗
-// getPhoneNumber (e){
-//   const encryptedData = e.detail.encryptedData
-//   const iv = e.detail.iv
-//   console("encryptedData",encryptedData);
-//   if (e.detail.encryptedData) {
-//     //用户按了允许授权按钮
-//     var that = this;
-//     wx.login({
-//       success(e) {
-//         const code = e.code
-//           wx.login({
-//           success(e){
-//            console.log("code:",e.code)
-//             },
-//   })
-//    console.log(e);
-//     //console.log(e.detail.errMsg)//包括敏感数据在内的完整用户信息的加密数据
-//     console.log(e.detail.iv)//加密算法的初始向量
-//     console.log(e.detail.encryptedData)//敏感数据对应的云 ID，开通云开发的小程序才会返回，可通过云调用直接获取开放数据
-//         // 根据小程序返回的密钥传给后端获取真正的手机号
-//         axios({
-//           //url: '/wx/miniProgram/login',
-//            method: "POST", 
-//            data: {
-//             code: code
-//           }
-//         }).then(({ e }) => {
-//           if(e.status === 0){
-//             axios({
-//              // url: '/wx/miniProgram/getPhoneNumber',
-//                method: "POST", 
-//                data: {
-//                 code: code,
-//                 encryptedData: encryptedData,
-//                 iv:iv
-//               }
-//             }).then(({ e }) => {
-//                 wx.switchTab({
-//                   url: '../index/index',
-//                   success: (e) => {}
-//               })
-//             })
-//           }
-//         })
-        
-//       }
-//     })
-//   } else {
-//     //用户按了拒绝按钮
-//     wx.showModal({
-//       title: '警告',
-//       content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
-//       showCancel: false,
-//       confirmText: '返回授权',
-//       success: function (e) {
-//         if (e.confirm) {
-//           console.log('用户点击了“返回授权”');
-//         }
-//       }
-//     });
-//   }
-// },
-
-  
- getPhoneNumber (e) {
-  wx.login({
-    success(e){
-      console.log("code:",e.code)
-    },
-  })
-  wx.setStorageSync('haha', e.detail.errMsg)
-   console.log(e);
-    console.log(e.detail.errMsg)//包括敏感数据在内的完整用户信息的加密数据
-
-    console.log(e.detail.iv)//加密算法的初始向量
-    console.log(e.detail.encryptedData)//敏感数据对应的云 ID，开通云开发的小程序才会返回，可通过云调用直接获取开放数据
-    console.log("jin")
+ getPhoneNumber (e) { 
+    //console.log("iv:",e.detail.iv)//加密算法的初始向量
+    //console.log("encryptedData:",e.detail.encryptedData)//敏感数据对应的云 ID，开通云开发的小程序才会返回，可通过云调用直接获取开放数据
+    const iv = e.detail.iv;
+    const encryptedData = e.detail.encryptedData;
+    const detail = e.detail;
     if(e.detail.errMsg=="getPhoneNumber:ok"){//点击了“允许”按钮，
-      var that=this;
-      requestUrl.requestUrl({//将用户信息传给后台数据库
-       // url: "/QXEV/xxx/xxx",
-        // params: {
-        //   openId: globalOpenId,//用户的唯一标识
-        //   nickName: e.detail.userInfo.nickName,//微信昵称
-        //   avatarUrl: e.detail.userInfo.avatarUrl,//微信头像
-        //   province: e.detail.userInfo.province,//用户注册的省
-        //   city: e.detail.userInfo.city//用户注册的市
-        // },
-        method: "post",
+      wx.login({
+        success(e){
+          wx.request({
+            url: config.HTTP_URL+config.AuthorizeLogin_URL,
+            method:"POST",
+            data:{
+              appid:config.appid,
+              encryptedData:encryptedData,
+              iv:iv,
+              secret:config.secret,
+              code:e.code
+            },
+            success(e){
+              if(e.data.msg == "ok") {
+                wx.setStorageSync('haha', detail.errMsg)
+                wx.switchTab({ url: '../index/index'});
+              }
+            },
+            fail(e){
+              console.log("获取异常！")
+            }
+          })
+          //console.log(e.code);
+        }
       })
-        .then((data) => {//then接收一个参数，是函数，并且会拿到我们在requestUrl中调用resolve时传的的参数
-            console.log("允许授权了");
-        })
-        .catch((errorMsg) => {
-          console.log(errorMsg)
-        })
-        wx.switchTab({ url: '../index/index',
-        })
     }
   },
   /**

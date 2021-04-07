@@ -1,10 +1,13 @@
 module.exports={
-  HTTP_URL:"http://192.168.1.108:8080",
+  HTTP_URL:"http://192.168.1.102:8080",
   SetUserinfo_URL:"/setUserinfo",
   GetUserinfo_URL:"/getUserinfo",
   UpdateUserinfo_URL:"/updateUserinfo",
   SetTakeAddress_URL:"/setTakeAddress",
   GetTakeAddress_URL:"/getTakeAddress",
   UpdateTakeAddress_URL:"/updateTakeAddress",
-  DeleteTakeAddress_URL:"/deleteTakeAddress"
+  DeleteTakeAddress_URL:"/deleteTakeAddress",
+  AuthorizeLogin_URL:"/authorizeLogin",
+  secret:"1dd31e8904ba78dc4933ce735435825f",
+  appid:'wxe5aec76fc17b9daa'
 }

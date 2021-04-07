@@ -1,19 +1,40 @@
 package com.example.map.domain;
 
 public class Userinfo {
+    private Integer userid;
+    private String wxphone;
     private String username;
     private String studentCode;
+    private Integer isregister;  //1为注册
     private String userphone;
-    private Boolean isDaina;
-    private String isDainaString;
-    private Integer id;
+    private String password;
+    private Integer isdaina; // 1为代拿
+    private Integer grabcounts;
+    private Integer putcounts;
 
-    public Integer getId() {
-        return id;
+    public Userinfo(){};
+    public Userinfo(String wxphone, Integer isregister, Integer isdaina, Integer grabcounts, Integer putcounts) {
+        this.wxphone = wxphone;
+        this.isregister = isregister;
+        this.isdaina = isdaina;
+        this.grabcounts = grabcounts;
+        this.putcounts = putcounts;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public String getWxphone() {
+        return wxphone;
+    }
+
+    public void setWxphone(String wxphone) {
+        this.wxphone = wxphone;
     }
 
     public String getUsername() {
@@ -32,6 +53,14 @@ public class Userinfo {
         this.studentCode = studentCode;
     }
 
+    public Integer getIsregister() {
+        return isregister;
+    }
+
+    public void setIsregister(Integer isregister) {
+        this.isregister = isregister;
+    }
+
     public String getUserphone() {
         return userphone;
     }
@@ -40,41 +69,51 @@ public class Userinfo {
         this.userphone = userphone;
     }
 
-    public Boolean getDaina() {
-        if (isDaina == true){
-            isDainaString = "true";
-        }else {
-            isDainaString = "false";
-        }
-        return isDaina;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDaina(Boolean daina) {
-            this.isDaina = daina;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getIsDainaString() {
-        return isDainaString;
+    public Integer getIsdaina() {
+        return isdaina;
     }
 
-    public void setIsDainaString(String isDainaString) {
-        if (isDainaString.equals("true")){
-            this.isDaina = true;
-        }else {
-            this.isDaina = false;
-        }
-        this.isDainaString = isDainaString;
+    public void setIsdaina(Integer isdaina) {
+        this.isdaina = isdaina;
+    }
+
+    public Integer getGrabcounts() {
+        return grabcounts;
+    }
+
+    public void setGrabcounts(Integer grabcounts) {
+        this.grabcounts = grabcounts;
+    }
+
+    public Integer getPutcounts() {
+        return putcounts;
+    }
+
+    public void setPutcounts(Integer putcounts) {
+        this.putcounts = putcounts;
     }
 
     @Override
     public String toString() {
         return "Userinfo{" +
-                "username='" + username + '\'' +
+                "userid=" + userid +
+                ", wxphone='" + wxphone + '\'' +
+                ", username='" + username + '\'' +
                 ", studentCode='" + studentCode + '\'' +
+                ", isregister=" + isregister +
                 ", userphone='" + userphone + '\'' +
-                ", isDaina=" + isDaina +
-                ", isDainaString='" + isDainaString + '\'' +
-                ", id=" + id +
+                ", password='" + password + '\'' +
+                ", isdaina=" + isdaina +
+                ", grabcounts=" + grabcounts +
+                ", putcounts=" + putcounts +
                 '}';
     }
 }
