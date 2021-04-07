@@ -1,0 +1,19 @@
+<!--pages/shAdd/shAdd.wxml-->
+<view class="container">
+  <scroll-view class="poi-list">
+    <view class="list-item" wx:for="{{address}}" wx:key="index">
+      <view class="list-item-box" bindtap="addAddress" data-address="{{address[index]}}">
+        <view class="item-title">
+          <text>{{item.username}} {{item.sex}} {{item.phone}}</text>
+        </view>
+        <view class="item-info">
+          <text class="item-address">{{item.location}} {{item.address}}</text>
+        </view>
+        </view>
+        <view class="iconfont icon-update icon" data-address="{{address[index]}}" bindtap="updatelocation"></view>
+    </view>
+    </scroll-view>
+  <view>
+    <button bindtap="tap" class="newaddress" style="width: 500px;">新增收货地址</button>
+  </view>
+</view>

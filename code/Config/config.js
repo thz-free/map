@@ -1,0 +1,10 @@
+module.exports={
+  HTTP_URL:"http://192.168.1.108:8080",
+  SetUserinfo_URL:"/setUserinfo",
+  GetUserinfo_URL:"/getUserinfo",
+  UpdateUserinfo_URL:"/updateUserinfo",
+  SetTakeAddress_URL:"/setTakeAddress",
+  GetTakeAddress_URL:"/getTakeAddress",
+  UpdateTakeAddress_URL:"/updateTakeAddress",
+  DeleteTakeAddress_URL:"/deleteTakeAddress"
+}

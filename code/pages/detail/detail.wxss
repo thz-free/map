@@ -1,0 +1,15 @@
+/* pages/detail/detail.wxss */
+.container{
+  padding: 15rpx;
+  text-align: center;
+}
+.content{
+  text-align: left;
+  font-size: 12pt;
+  line-height: 60rpx;
+}
+.button{
+  width:250rpx;
+  height: 100rpx;
+  margin: 20rpx auto;
+}

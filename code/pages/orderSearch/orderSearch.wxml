@@ -1,0 +1,10 @@
+<!--pages/orderSearch/orderSearch.wxml-->
+<view id='myFavorites'>
+<text>已接订单（{{num}}）</text>
+<!--已接单列表-->
+<view id='order-list'>
+  <view class="list-item" wx:for="{{orderList}}" wx:for-item="order" wx:key="order.id">
+    <text class="order-title" bindtap="goToDetail" data-id='{{order.id}}'>{{order.title}}</text>
+  </view>
+</view>
+</view>

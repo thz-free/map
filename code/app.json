@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/order/order",
+    "pages/user/user",
+    "pages/detail/detail",
+    "pages/userInfo/userInfo",
+    "pages/orderSearch/orderSearch",
+    "pages/dn/dn",
+    "pages/dg/dg",
+    "pages/db/db",
+    "pages/orderDetail/orderDetail",
+    "pages/service/service",
+    "pages/publish/publish",
+    "pages/publicDetail/publicDetail",
+    "pages/authorize/authorize",
+    "pages/shAdd/shAdd",
+    "pages/chooseCity/chooseCity",
+    "pages/chooseLocation/chooseLocation",
+    "pages/userLocationMap/userLocationMap",
+    "pages/locationinfo/locationinfo",
+    "pages/userinfoList/userinfoList"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#666699",
+    "navigationBarTitleText": "校园跑腿",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#ff4c91",
+    "borderStyle": "white",
+    "backgroundColor": "#CCCCFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/index/zy_1.png",
+        "selectedIconPath": "/images/index/zy_1.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "/images/index/sd.png",
+        "selectedIconPath": "/images/index/sd.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "/images/index/gr.png",
+        "selectedIconPath": "/images/index/gr.png"
+      }
+    ]
+  },
+  "permission": {
+
+    "scope.userLocation": {
+    
+    "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    
+    }
+    
+    }
+}

@@ -1,0 +1,57 @@
+<!--pages/userLocationMap/userLocationMap.wxml-->
+<view>
+  <form catchsubmit="formSubmit">
+  <view class="locationInfo">
+    <view>
+      收货地址：
+    </view>
+    <view style="display:flex">
+      <view class="iconfont icon-map"></view>
+      <view bindtap="ak">
+        <view wx:if="{{ischoose}}">
+            <input placeholder="点击选择" placeholder-style="color:#83837c" disabled="true"/>
+        </view>
+        <view wx:else>
+            <input placeholder="{{message}}" placeholder-style="color:#000000" disabled="true"/>
+        </view>  
+      </view>
+    </view>
+  </view>
+  <view class="locationInfo">
+    <view>
+      门牌号：
+    </view>
+    <view>
+      <input placeholder="详细地址，例:15栋201" placeholder-style="color:#83837c" name="address"/>
+    </view>
+  </view>
+  <view class="locationInfo">
+    <view>
+      联系人：
+    </view>
+    <view>
+      <input placeholder="请填写收货人姓名" placeholder-style="color:#83837c" name="username"/>
+    </view>
+  </view>
+  <view class="locationInfo">
+    <radio-group class="group" name="sex">
+        <view class="label" wx:for="{{radioItems}}">
+          <radio id="{{item.name}}" value="{{item.name}}" checked="{{item.checked}}" color="#ffcc00"></radio>
+          <label class="label-2-text" for="{{item.name}}"><text>{{item.name}}</text></label>
+        </view>
+      </radio-group>
+  </view>
+  <view class="locationInfo">
+    <view>
+      手机号：
+    </view>
+    <view>
+      <input placeholder="请填写收货人手机号" placeholder-style="color:#83837c" name="tel"/>
+    </view>
+  </view>
+  <view>
+    <button id="button" hover-class="wsui-btn__hover_list" hover-stay-time="50" formType="submit">保存</button>
+  </view>
+</form>
+</view>
+

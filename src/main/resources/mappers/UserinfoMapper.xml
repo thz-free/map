@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.map.dao.IUserinfoDao">
+    <!--插入用户数据-->
+    <insert id="setUserinfo" parameterType="Userinfo">
+        INSERT INTO userinfo (username,studentCode,userphone,isDaina) VALUES (#{username},#{studentCode},#{userphone},#{isDaina})
+    </insert>
+    <!--获取用户信息-->
+    <select id="getUserinfo" resultType="Userinfo">
+        select * from userinfo
+    </select>
+    <!--更改用户信息-->
+    <update id="updateUserinfo" parameterType="Userinfo">
+        UPDATE userinfo SET username=#{username},studentCode=#{studentCode},userphone=#{userphone},isDaina=#{isDaina} WHERE id=#{id}
+    </update>
+</mapper>

@@ -1,0 +1,51 @@
+/* pages/shAdd/shAdd.wxss */
+@import "../../lib/icon/update.wxss";
+page{
+  height: 100%;
+}
+.newaddress{
+  background: #e5e600;
+  margin-bottom: 0;
+}
+.container{
+  padding-top: 0;
+  padding-bottom: 0%;
+  height: 100%;
+}
+.icon{
+  margin: auto;
+}
+.list-item-box{
+  width: 90%;
+}
+.poi-list{
+  margin-top: 0;
+}
+.poi-list .list-item {
+  display: flex;
+  height: 50px;
+  padding: 8px 10px;
+  padding-top: 13px;
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+}
+.poi-list .item-title {
+  line-height: 24px;
+  width: 80%;
+  font-size: 17px;
+  color: #222222;
+  letter-spacing: 0;
+  overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.poi-list .item-info {
+  width: 80%;
+  line-height: 20px;
+  overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #444444;
+  letter-spacing: 0;
+}

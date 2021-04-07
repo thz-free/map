@@ -1,0 +1,53 @@
+<!--pages/userLocationMap/userLocationMap.wxml-->
+<view>
+  <form catchsubmit="formSubmit">
+  <view class="locationInfo">
+    <view>
+      收货地址：
+    </view>
+    <view style="display:flex">
+      <view class="iconfont icon-map"></view>
+      <view bindtap="ak">
+        <input value="{{location}}" placeholder-style="color:#000000" disabled="true" name="location"/>  
+      </view>
+    </view>
+  </view>
+  <view class="locationInfo">
+    <view>
+      门牌号：
+    </view>
+    <view>
+      <input value="{{address}}" placeholder-style="color:#83837c" name="address"/>
+    </view>
+  </view>
+  <view class="locationInfo">
+    <view>
+      联系人：
+    </view>
+    <view>
+      <input value="{{username}}" placeholder-style="color:#83837c" name="username"/>
+    </view>
+  </view>
+  <view class="locationInfo">
+    <radio-group class="group" name="sex">
+        <view class="label" wx:for="{{radioItems}}" wx:key="index">
+          <radio id="{{item.name}}" value="{{item.name}}" checked="{{item.checked}}" color="#ffcc00"></radio>
+          <label class="label-2-text" for="{{item.name}}"><text>{{item.name}}</text></label>
+        </view>
+      </radio-group>
+  </view>
+  <view class="locationInfo">
+    <view>
+      手机号：
+    </view>
+    <view>
+      <input value="{{phone}}" placeholder-style="color:#83837c" name="phone"/>
+    </view>
+  </view>
+  <view>
+    <button class="button" hover-class="wsui-btn__hover_list" hover-stay-time="50" formType="submit" style="width:300px">保存</button>
+    <button class="button" hover-class="wsui-btn__hover_list" hover-stay-time="50" style="width:300px" bindtap="delete">删除</button>
+  </view>
+</form>
+</view>
+

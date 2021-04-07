@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.map.dao.ITakeAddressDao">
+    <!--存储收货地址数据-->
+    <insert id="setTakeAddress" parameterType="TakeAddress">
+        INSERT INTO takeaddress (address,sex,phone,location,username) VALUES (#{address},#{sex},#{phone},#{location},#{username})
+    </insert>
+    <!--获取收货地址数据-->
+    <select id="getTakeAddress" resultType="TakeAddress">
+        select * from takeaddress
+    </select>
+    <!--更改收货地址数据-->
+    <update id="updateTakeAddress" parameterType="TakeAddress">
+        UPDATE takeaddress SET address=#{address},phone=#{phone},sex=#{sex},location=#{location},username=#{username} WHERE id=#{id}
+    </update>
+    <!--删除收货地址数据-->
+    <delete id="deleteTakeAddress" parameterType="TakeAddress">
+        DELETE FROM takeaddress WHERE id = #{id}
+    </delete>
+</mapper>

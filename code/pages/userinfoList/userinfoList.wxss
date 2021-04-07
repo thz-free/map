@@ -1,0 +1,48 @@
+/* pages/userinfoList/userinfoList.wxss */
+/* pages/shAdd/shAdd.wxss */
+@import "../../lib/icon/update.wxss";
+page{
+  height: 100%;
+}
+.container{
+  padding-top: 0;
+  padding-bottom: 0%;
+  height: 100%;
+}
+.poi-list{
+  margin-top: 0;
+}
+.poi-list .list-item {
+  display: flex;
+  height: 50px;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+}
+.poi-list .item-title {
+  padding-top: 13px;
+  display: flex;
+  line-height: 24px;
+  width: 80%;
+  font-size: 17px;
+  color: #222222;
+  letter-spacing: 0;
+  overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.group{
+  margin-left: 100rpx;
+  display: flex;
+  flex-flow: row nowrap;
+}
+#button{
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+  border-radius: 20rpx;
+  margin-top: 50rpx;
+  width: 90%;
+  background-color:#ffe680;
+}
+/* 点击后的透明度 */
+.wsui-btn__hover_list {
+  opacity: 0.5;
+}

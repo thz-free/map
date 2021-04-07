@@ -1,0 +1,19 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="go-center">
+  <view class="hander">
+    <view class="hander-left">
+  <label>订</label>
+  <label>单</label>
+  <label>号</label>
+</view>
+<view class="hander-right">
+<label>A66</label>
+</view>
+</view>
+<view class="main">
+  <label>代主姓名:\t\t\t\t\t高燕</label>
+  <label>取货地点:\t\t\t\t\t校园物流 </label>
+  <label>送达地点:\t\t\t\t\t8-211 </label>
+  <label>代主联系方式:\t\t\t\t\t15235007641 </label>
+</view>
+</view>

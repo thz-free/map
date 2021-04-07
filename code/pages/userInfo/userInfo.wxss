@@ -1,0 +1,25 @@
+/* pages/userInfo/userInfo.wxss */
+/* pages/userLocationMap/userLocationMap.wxss */
+.locationInfo{
+  display: flex;
+  flex-flow: row nowrap;
+  height: 40rpx;
+  padding: 18px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.group{
+  margin-left: 100rpx;
+  display: flex;
+  flex-flow: row nowrap;
+}
+#button{
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+  border-radius: 20rpx;
+  margin-top: 50rpx;
+  width: 90%;
+  background-color:#ffe680;
+}
+/* 点击后的透明度 */
+.wsui-btn__hover_list {
+  opacity: 0.5;
+}

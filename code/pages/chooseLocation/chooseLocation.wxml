@@ -1,0 +1,27 @@
+<!--pages/chooseLocation/chooseLocation.wxml-->
+<view  class='list-search' style="height:45px">
+        <view wx:if="{{isBack}}" class="iconfont icon-down icon-map" style="width:35%;height:100%;font-size:9pt;padding-top:5%" bindtap="chooseCity">
+        {{city}}
+        </view>
+        <view wx:else class="iconfont icon-down icon-map" style="width:35%;height:100%;font-size:9pt;padding-top:5%" bindtap="chooseCity">
+        {{chooseCity}}
+        </view>
+        <view class='list-search-box'>
+            <icon type="search" size="15" />
+            <input placeholder="小区/街道/大厦/学校名称" bindinput='input' name="keyword"/>
+        </view>
+        <!-- <button class='search-button' catchtap='searchMt' style=" width: 30%;">搜索</button> -->
+</view>
+<view class="pois-contianer">
+    <scroll-view class="poi-list" wx:if="{{pois.length > 0}}">
+          <view class="list-item" wx:for="{{pois}}" wx:key="" data-index="{{index}}" catchtap="setMessage">
+            <view class="item-title">
+              <text>{{item.title}}</text>
+            </view>
+            <view class="item-info">
+              <text class="item-address">{{item.address}}</text>
+            </view>
+          </view>
+    </scroll-view>
+    <view class="noPois" wx:if="{{pois.length === 0}}">搜索无结果</view>
+</view>

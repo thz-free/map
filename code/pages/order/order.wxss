@@ -1,0 +1,40 @@
+/* pages/order/order.wxss */
+.head{
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  padding-top: 36rpx;
+  height: 125rpx;
+}
+.function{
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  width: 31%;
+  height: 100%;
+  margin: 10rpx 10rpx;
+  background-color: blanchedalmond;
+}
+.font{
+ font-size: 45rpx;
+  font-weight: bold;
+  padding: 26rpx 65rpx;
+  margin: 0;
+}
+.function:hover{
+  background-color: cadetblue;
+}
+/*分割线样式*/
+.divLine{
+  background: #E0E3DA;
+  width: 100%;
+  height: 5rpx;
+ }
+ .container_1 {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}

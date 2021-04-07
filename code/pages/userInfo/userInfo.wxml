@@ -1,0 +1,44 @@
+<!--pages/userInfo/userInfo.wxml-->
+<view>
+  <form catchsubmit="formSubmit">
+  <view class="locationInfo">
+    <view>
+      姓名：
+    </view>
+    <view style="display:flex">
+      <view>
+          <input placeholder="请输入您的姓名" placeholder-style="color:#83837c" name="name"/>
+      </view>
+    </view>
+  </view>
+  <view class="locationInfo">
+    <view>
+      学籍号：
+    </view>
+    <view>
+      <input placeholder="请输入学籍号" placeholder-style="color:#83837c" name="studentCode"/>
+    </view>
+  </view>
+  <view class="locationInfo">
+    <view>
+      手机号：
+    </view>
+    <view>
+      <input placeholder="请输入您的手机号" placeholder-style="color:#83837c" name="phone"/>
+    </view>
+  </view>
+  <view class="locationInfo">
+    <radio-group class="group" name="isDaina">
+        <view class="label" wx:for="{{radioItems}}">
+          <radio id="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}" color="#ffcc00"></radio>
+          <label class="label-2-text" for="{{item.name}}"><text>{{item.name}}</text></label>
+        </view>
+      </radio-group>
+  </view>
+  <view>
+    <button id="button" hover-class="wsui-btn__hover_list" hover-stay-time="50" formType="submit">提交</button>
+  </view>
+</form>
+</view>
+
+

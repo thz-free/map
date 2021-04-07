@@ -1,0 +1,42 @@
+/* pages/orderDetail/orderDetail.wxss */
+.go-center{
+  top: 6vh; width: 80vw;
+  position: fixed;
+  left: 10vw;
+  top: 6vh;
+}
+.hander{
+  height: 200rpx;
+}
+.hander-left{
+  width: 20%;
+  background-color: gray;
+  align-items: center;
+  height: 200rpx;
+  flex-direction: row;
+
+}
+.hander-left label{
+  display: flex;
+  flex-direction: row;
+  padding-left: 40rpx;
+  padding-top: 10rpx;
+}
+.hander-right{
+  width: 20%;
+  align-items: center;
+  padding-left: 200rpx;
+  margin-top: -145rpx;
+
+}
+.hander-right label{
+  display: flex;
+  flex-direction: row;
+  padding-top: 12rpx;
+  font-size: 65rpx;
+}
+.main label{
+  display: flex;
+  flex-direction: column;
+  padding-top: 40rpx;
+}

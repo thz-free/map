@@ -1,0 +1,35 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+/*订单列表容器*/
+#order-list{
+  min-height:600rpx;
+  padding: 15rpx;
+}
+/*列表项目*/
+.list-item{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid gray;
+}
+/*订单标题*/
+.order-title{
+  width: 100%;
+  display: block;
+  line-height: 80rpx;
+  font-size: 10pt;
+}
+page{
+  font-family: Helvetica Nene,Helvetica,Arial,sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing:border-box ;
+}

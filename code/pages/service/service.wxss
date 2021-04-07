@@ -1,0 +1,7 @@
+/* pages/service/service.wxss */
+.content{
+  width: 80vw;
+  position: fixed;
+  left: 10vw;
+  top: 6vh;
+}

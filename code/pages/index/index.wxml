@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="index">
+ <image src="/images/index/bg.jpg" class="index-image"></image>
+<!-- main -->
+ <view>
+ <view>
+ </view>
+   <image src="/images/index/dn1.png" class="index-function" bindtap="dn"></image>
+   <image src="/images/index/gwc1.png" class="index-function" bindtap="dg"></image>
+   <image src="/images/index/db1.png" class="index-function" bindtap="db"></image>
+ </view>
+ <view>
+   <text class="index-text">代拿</text>
+   <text class="index-text">代购</text>
+   <text class="index-text">代办</text>
+ </view>
+ <!-- foot -->
+ <view>
+   
+ </view>
+</view>

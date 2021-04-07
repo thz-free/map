@@ -1,0 +1,4 @@
+/* pages/publish/publish.wxss */
+#myFavorites{
+  padding: 20rpx;
+}

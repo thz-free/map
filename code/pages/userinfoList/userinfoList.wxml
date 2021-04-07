@@ -1,0 +1,38 @@
+<!--pages/userinfoList/userinfoList.wxml-->
+<view class="container">
+  <form catchsubmit="formSubmit">
+  <scroll-view class="poi-list">
+    <view class="list-item">
+        <view class="item-title">
+          <text>姓名：</text>
+          <input value="{{username}}" name="username"/>
+        </view>
+    </view>
+    <view class="list-item">
+      <view class="item-title">
+          <text>学籍号：</text>
+          <input value="{{studentCode}}" name="studentCode"/>
+        </view>
+    </view>
+    <view class="list-item">
+      <view class="item-title">
+          <text>电话号码：</text>
+          <input value="{{userphone}}" name="userphone"/>
+        </view>
+    </view>
+    <view class="list-item">
+      <view class="item-title">
+        <radio-group class="group" name="daina">
+          <view class="label" wx:for="{{radioItems}}">
+            <radio id="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}" color="#ffcc00"></radio>
+            <label class="label-2-text" for="{{item.name}}"><text>{{item.name}}</text></label>
+          </view>
+        </radio-group>
+        </view>
+    </view>
+    </scroll-view>
+    <view>
+      <button id="button" hover-class="wsui-btn__hover_list" hover-stay-time="50" formType="submit">保存</button>
+    </view>
+  </form>
+</view>

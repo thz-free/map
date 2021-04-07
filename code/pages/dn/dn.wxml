@@ -1,0 +1,32 @@
+<!--pages/dn/dn.wxml-->
+<view>
+  <form bindsubmit="formSubmit">
+    <view class="content">
+    <view class="dn">
+      <text class="label">快递所在地\n\n</text>
+      <input name="startAdd" type="text" placeholder="校园物流" class="input" bindblur="startAddress"/>
+    </view>
+    <view class="dn">
+      <view class="address">
+        <text class="label">送达地址\n\n</text>
+        <view  class="myAddress">
+          <text bindtap="myAddress" style="font-size: 10px;">我的地址</text>
+        </view>
+      </view>
+      <view wx:if="{{addressContent=='8-528'}}">
+        <input name="destinationAdd"  placeholder="{{addressContent}}" type="text" class="input"  bindblur="destinationAddress"/>
+      </view>
+      <view wx:else>
+        <input name="destinationAdd"  value="{{addressContent}}" type="text" class="input"  bindblur="destinationAddress"/>
+      </view>
+    </view>
+    <view class="dn">
+      <text class="label">上传快递信息截图\n</text>
+      <button bindtap="chooseImage">选择图片</button>
+      <image src="{{src}}" mode="widthFix"></image>
+    </view>
+    <button form-type="submit">提交</button>
+  </view>
+ 
+  </form>
+</view>

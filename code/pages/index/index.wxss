@@ -1,0 +1,35 @@
+/**index.wxss**/
+/* .userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+} */
+
+
+.index-image{
+  height: 130px;
+  width: 100%;
+ 
+}
+.index-text{
+  overflow: hidden;
+  width: 30%;
+  height: 20rpx;
+  margin: 10rpx 85rpx;
+  color: gray;
+}
+.index-function{
+  overflow: hidden;
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx 47rpx;
+  border-radius: 50%;
+} 
+.userName{
+  font-size: 50rpx;
+ padding-top: 10px;
+}
+.usermotto {
+  margin-top: 50px;
+}

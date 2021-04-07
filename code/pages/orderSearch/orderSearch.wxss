@@ -1,0 +1,4 @@
+/* pages/orderSearch/orderSearch.wxss */
+#myFavorites{
+  padding: 20rpx;
+}

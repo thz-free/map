@@ -1,0 +1,45 @@
+/* pages/user/user.wxss */
+#myLogin{
+  background-color: #d4d3d3;
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+/*头像*/
+#myIcon{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+/*微信昵称*/
+#nickName{
+  color: white;
+}
+.item{
+  width: 100%;
+  line-height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+ 
+}
+.icon_1{
+  width: 60rpx;
+  height: 42rpx;
+  padding-top: 3%;
+  padding-left: 526rpx;
+}
+.icon_2{
+  width: 60rpx;
+  height: 42rpx;
+  padding-top: 3%;
+  padding-left: 415rpx;
+}
+.icon{
+  width: 60rpx;
+  height: 42rpx;
+  padding-top: 3%;
+  padding-left: 450rpx;
+}
