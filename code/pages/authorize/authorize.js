@@ -39,7 +39,8 @@ Page({
             },
             success(e){
               if(e.data.msg == "ok") {
-                wx.setStorageSync('haha', detail.errMsg)
+                wx.setStorageSync('errMsg', detail.errMsg);
+                wx.setStorageSync('wxphone', e.data.wxphone);
                 wx.switchTab({ url: '../index/index'});
               }
             },

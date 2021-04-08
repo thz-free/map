@@ -1,7 +1,7 @@
 // index.js
 // 获取应用实例
 const app = getApp()
-
+const config = require("../../Config/config")
 Page({//注册当前页面
   data: {
     motto: 'Hello World',
@@ -33,7 +33,21 @@ Page({//注册当前页面
     })
   },
   onLoad() {
-    
+    wx.request({
+      url: config.HTTP_URL+config.IsRegister_URL,
+      method:"POST",
+      data:{
+        wxphone:wx.getStorageSync('wxphone')
+      },
+      success(e){
+        //console.log(e)
+        if(e.data.isregister){
+          wx.setStorageSync('isregister', true)
+        }else{
+          wx.setStorageSync('isregister', false)
+        }
+      }
+    })
   },
   onShow(){
     //console.log(this.data)
@@ -43,7 +57,7 @@ Page({//注册当前页面
       })
     }
     var that = this;
-    var haha = wx.getStorageSync('haha')
+    var haha = wx.getStorageSync('errMsg')
     // 判断是否已经授权
     wx.getSetting({
       success: (e) => {

@@ -71,12 +71,13 @@ public class UserinfoController {
                 //获取的该手机号并不一定为非空，所以后面需要判断phone是否为null或者""
                 String wxphone = parseObject.getString("phoneNumber");
                 //System.out.println(wxphone);
-                if(userinfoService.isResgister(wxphone)) {
+                if(userinfoService.isAuthorize(wxphone)) {
                     resultJson.put("msg", "ok");
                 } else {
                     userinfoService.authorizeLogin(new Userinfo(wxphone, 0, 0, 0, 0));
                     resultJson.put("msg", "ok");
                 }
+                resultJson.put("wxphone",wxphone);
             }else {
                 resultJson.put("msg", "fail");
                 return null;
@@ -88,5 +89,39 @@ public class UserinfoController {
         return resultJson.toJSONString();
     }
 
+    /**
+     * 是否注册
+     * @param jsonObject
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/isRegister",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public String isRegister(@RequestBody JSONObject jsonObject){
+        String wxphone = jsonObject.getString("wxphone");
+        //System.out.println("phone"+wxphone);
+        JSONObject result = new JSONObject();
+        try {
+           //判断是否注册
+            if(userinfoService.isRegister(wxphone)){
+                result.put("isregister",true);
+            }else {
+                result.put("isregister",false);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result.toJSONString();
+    }
 
+    /**
+     * 保存用户信息
+     * @param jsonObject
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/setUserinfo",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public String setUserinfo(@RequestBody JSONObject jsonObject){
+
+        return null;
+    }
 }

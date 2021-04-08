@@ -18,9 +18,15 @@ getMyInfo:function(e){
 },
 //个人资料点击跳转
 info:function(e){
-wx.navigateTo({
-  url: '/pages/userInfo/userInfo',
-})
+  if(wx.getStorageSync('isregister')){
+    wx.navigateTo({
+      url: '/pages/userinfoList/userinfoList',
+    })
+  }else{
+    wx.navigateTo({
+      url: '/pages/userInfo/userInfo',
+    })
+  }
 },
 orderSearch:function(e){
   wx.navigateTo({

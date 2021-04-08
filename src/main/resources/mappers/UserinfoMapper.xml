@@ -3,13 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.map.dao.IUserinfoDao">
-    <!--判断是否注册-->
-    <select id="isRegister" resultType="Userinfo">
+    <!--判断是否授权-->
+    <select id="isAuthorize" resultType="Userinfo">
         SELECT * FROM userinfo WHERE wxphone=#{wxphone}
+    </select>
+    <!--判断是否注册-->
+    <select id="isRegister" resultType="Integer">
+        SELECT isregister FROM userinfo WHERE wxphone=#{wxphone}
     </select>
     <!--插入授权数据-->
     <insert id="authorizeLogin" parameterType="Userinfo">
         INSERT INTO userinfo (wxphone,isregister,grabcounts,putcounts,isdaina) VALUES (#{wxphone},#{isregister},#{grabcounts},#{putcounts},#{isdaina})
+    </insert>
+    <!--保存用户信息-->
+    <insert id="setUserinfo" parameterType="Userinfo">
+        INSERT INTO userinfo (username,studentcode,isregister,userphone,isdaina) VALUES (#{username},#{studentCode},#{isregister},#{userphone},#{isdaina})
     </insert>
     <!--更改用户信息-->
     <update id="updateUserinfo" parameterType="Userinfo">

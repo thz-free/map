@@ -11,6 +11,10 @@ import java.util.List;
 public interface IUserinfoDao {
     //授权时存储数据
     void authorizeLogin(Userinfo userinfo) throws Exception;
+    //判断是否授权
+    Userinfo isAuthorize(String wxphone) throws Exception;
     //判断是否注册
-    Userinfo isRegister(String wxphone) throws Exception;
+    Integer isRegister(String wxphone) throws Exception;
+    //保存用户信息
+    void setUserinfo(Userinfo userinfo) throws Exception;
 }

@@ -77,8 +77,7 @@ formSubmit:function(e){
       },              
       method:'POST',              
       header:{                
-      'content-type':'application/json',
-      'x-token':""//这里是连接需要的token令牌 不需要请忽略              
+      'content-type':'application/json',    
       },
       success(res){
         console.log(res)
