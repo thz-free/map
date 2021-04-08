@@ -17,4 +17,6 @@ public interface IUserinfoDao {
     Integer isRegister(String wxphone) throws Exception;
     //保存用户信息
     void setUserinfo(Userinfo userinfo) throws Exception;
+    //获取用户信息
+    Userinfo getUserinfo(String wxphone) throws Exception;
 }

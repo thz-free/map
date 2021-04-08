@@ -121,7 +121,38 @@ public class UserinfoController {
     @ResponseBody
     @RequestMapping(value = "/setUserinfo",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public String setUserinfo(@RequestBody JSONObject jsonObject){
-
-        return null;
+        JSONObject result = new JSONObject();
+        try {
+            int isdaina = jsonObject.getString("isDaina").equals("false") ? 0 : 1;
+            userinfoService.setUserinfo(new Userinfo(jsonObject.getString("username"),jsonObject.getString("studentCode"),1,jsonObject.getString("userphone"),isdaina,jsonObject.getString("wxphone")));
+            result.put("msg","ok");
+            System.out.println("用户信息保存成功！");
+        } catch (Exception e) {
+            result.put("msg","fail");
+            System.out.println("用户信息保存失败！");
+            e.printStackTrace();
+        }
+        System.out.println(jsonObject.toJSONString());
+        return result.toJSONString();
     }
+
+    /**
+     * 获取用户基本信息
+     * @param jsonObject
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getUserinfo",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public String getUserinfo(@RequestBody JSONObject jsonObject){
+        JSONObject result = new JSONObject();
+        try {
+            result.put("userinfo",userinfoService.getUserinfo(jsonObject.getString("wxphone")));
+            result.put("msg","ok");
+        } catch (Exception e) {
+            result.put("msg","fail");
+            e.printStackTrace();
+        }
+        return result.toJSONString();
+    }
+    
 }

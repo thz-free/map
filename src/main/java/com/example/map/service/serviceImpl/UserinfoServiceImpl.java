@@ -60,4 +60,15 @@ public class UserinfoServiceImpl implements UserinfoService {
         iUserinfoDao.setUserinfo(userinfo);
     }
 
+    /**
+     * 获取用户信息
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public Userinfo getUserinfo(String wxphone) throws Exception {
+        return iUserinfoDao.getUserinfo(wxphone);
+    }
+
+
 }

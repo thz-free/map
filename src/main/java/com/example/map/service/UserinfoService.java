@@ -9,4 +9,5 @@ public interface UserinfoService {
     boolean isAuthorize(String wxphone)throws Exception;
     boolean isRegister(String wxphone)throws Exception;
     void setUserinfo(Userinfo userinfo)throws Exception;
+    Userinfo getUserinfo(String wxphone) throws Exception;
 }

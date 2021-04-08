@@ -33,21 +33,6 @@ Page({//注册当前页面
     })
   },
   onLoad() {
-    wx.request({
-      url: config.HTTP_URL+config.IsRegister_URL,
-      method:"POST",
-      data:{
-        wxphone:wx.getStorageSync('wxphone')
-      },
-      success(e){
-        //console.log(e)
-        if(e.data.isregister){
-          wx.setStorageSync('isregister', true)
-        }else{
-          wx.setStorageSync('isregister', false)
-        }
-      }
-    })
   },
   onShow(){
     //console.log(this.data)

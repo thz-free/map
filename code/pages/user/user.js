@@ -1,4 +1,5 @@
 // pages/user/user.js
+const config = require("../../Config/config")
 Page({
 
   /**
@@ -18,6 +19,7 @@ getMyInfo:function(e){
 },
 //个人资料点击跳转
 info:function(e){
+
   if(wx.getStorageSync('isregister')){
     wx.navigateTo({
       url: '/pages/userinfoList/userinfoList',
@@ -62,7 +64,22 @@ service:function(e){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.request({
+      url: config.HTTP_URL+config.IsRegister_URL,
+      method:"POST",
+      data:{
+        wxphone:wx.getStorageSync('wxphone')
+      },
+      success(e){
+        //console.log(e)
+        //判断是否注册
+        if(e.data.isregister){
+          wx.setStorageSync('isregister', true)
+        }else{
+          wx.setStorageSync('isregister', false)
+        }
+      }
+    })
   },
 
   /**

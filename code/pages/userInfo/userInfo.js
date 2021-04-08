@@ -73,7 +73,8 @@ formSubmit:function(e){
           username:name,
           userphone:phone,
           studentCode:studentCode,
-          isDaina:isDaina         
+          isDaina:isDaina,
+          wxphone:wx.getStorageSync('wxphone')         
       },              
       method:'POST',              
       header:{                
@@ -82,7 +83,6 @@ formSubmit:function(e){
       success(res){
         console.log(res)
         if(res.data.msg == "ok"){  //判断是否存储成功
-          wx.setStorageSync('isRegister', true);
           wx.switchTab({
             url: '../user/user',
             success(res){

@@ -20,11 +20,11 @@ Page({
       url: config.HTTP_URL+config.UpdateUserinfo_URL,//这里是要连接的本地服务器的地址              
       data: {                
       //这里是要携带的参数  
-          username:name,
-          userphone:phone,
-          studentCode:studentCode,
-          isDaina:isDaina,
-          id:wx.getStorageSync('userId')         
+        username:name,
+        userphone:phone,
+        studentCode:studentCode,
+        isDaina:isDaina,
+        wxphone:wx.getStorageSync('wxphone')         
       },              
       method:'POST',              
       header:{                
@@ -83,14 +83,18 @@ Page({
     const that = this;
       wx.request({
         url: config.HTTP_URL+config.GetUserinfo_URL,
-        method:'POST',              
+        method:'POST', 
+        data:{
+          wxphone:wx.getStorageSync('wxphone')
+        } ,            
         header:{                
         'content-type':'application/json',       
         },
         success(res){
-          const data = res.data.userinfoList[0];
-          wx.setStorageSync('userId', data.id);
-          if(data.daina){
+          console.log("用户信息:",res)
+          const data = res.data.userinfo;
+          wx.setStorageSync('userId', data.userid);
+          if(data.isdaina == 1){
             that.setData({
               username:data.username,
               studentCode:data.studentCode,

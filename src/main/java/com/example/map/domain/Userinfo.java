@@ -7,7 +7,6 @@ public class Userinfo {
     private String studentCode;
     private Integer isregister;  //1为注册
     private String userphone;
-    private String password;
     private Integer isdaina; // 1为代拿
     private Integer grabcounts;
     private Integer putcounts;
@@ -19,6 +18,15 @@ public class Userinfo {
         this.isdaina = isdaina;
         this.grabcounts = grabcounts;
         this.putcounts = putcounts;
+    }
+
+    public Userinfo(String username, String studentCode, Integer isregister, String userphone, Integer isdaina,String wxphone) {
+        this.username = username;
+        this.studentCode = studentCode;
+        this.isregister = isregister;
+        this.userphone = userphone;
+        this.isdaina = isdaina;
+        this.wxphone = wxphone;
     }
 
     public Integer getUserid() {
@@ -69,14 +77,6 @@ public class Userinfo {
         this.userphone = userphone;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Integer getIsdaina() {
         return isdaina;
     }
@@ -110,7 +110,6 @@ public class Userinfo {
                 ", studentCode='" + studentCode + '\'' +
                 ", isregister=" + isregister +
                 ", userphone='" + userphone + '\'' +
-                ", password='" + password + '\'' +
                 ", isdaina=" + isdaina +
                 ", grabcounts=" + grabcounts +
                 ", putcounts=" + putcounts +

@@ -3,7 +3,7 @@ module.exports={
   IsRegister_URL:"/isRegister",
   SetUserinfo_URL:"/setUserinfo",
   GetUserinfo_URL:"/getUserinfo",
-  UpdateUserinfo_URL:"/updateUserinfo",
+  UpdateUserinfo_URL:"/setUserinfo",
   SetTakeAddress_URL:"/setTakeAddress",
   GetTakeAddress_URL:"/getTakeAddress",
   UpdateTakeAddress_URL:"/updateTakeAddress",

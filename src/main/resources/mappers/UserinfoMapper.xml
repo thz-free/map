@@ -16,9 +16,13 @@
         INSERT INTO userinfo (wxphone,isregister,grabcounts,putcounts,isdaina) VALUES (#{wxphone},#{isregister},#{grabcounts},#{putcounts},#{isdaina})
     </insert>
     <!--保存用户信息-->
-    <insert id="setUserinfo" parameterType="Userinfo">
-        INSERT INTO userinfo (username,studentcode,isregister,userphone,isdaina) VALUES (#{username},#{studentCode},#{isregister},#{userphone},#{isdaina})
-    </insert>
+    <update id="setUserinfo" parameterType="Userinfo">
+        UPDATE userinfo SET username=#{username},studentcode=#{studentCode},isregister=#{isregister},userphone=#{userphone},isdaina=#{isdaina}  WHERE wxphone=#{wxphone}
+    </update>
+    <!--获取用户信息-->
+    <select id="getUserinfo" resultType="Userinfo">
+        select * from userinfo where wxphone=#{wxphone}
+    </select>
     <!--更改用户信息-->
     <update id="updateUserinfo" parameterType="Userinfo">
         UPDATE userinfo SET username=#{username},studentCode=#{studentCode},userphone=#{userphone},isDaina=#{isDaina} WHERE id=#{id}
