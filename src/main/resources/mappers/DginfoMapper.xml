@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.map.dao.IDginfoDao">
+    <!--存储收货地址数据-->
+    <insert id="setDgInfo" parameterType="dginfo">
+        INSERT INTO dginfo (buyThings,buyaddress,deliveryaddress) VALUES (#{buyThings},#{buyaddress},#{deliveryaddress})
+    </insert>
+<!--    &lt;!&ndash;获取收货地址数据&ndash;&gt;-->
+<!--    <select id="getTakeAddress" resultType="TakeAddress">-->
+<!--        select * from takeaddress-->
+<!--    </select>-->
+<!--    &lt;!&ndash;更改收货地址数据&ndash;&gt;-->
+<!--    <update id="updateTakeAddress" parameterType="TakeAddress">-->
+<!--        UPDATE takeaddress SET address=#{address},phone=#{phone},sex=#{sex},location=#{location},username=#{username} WHERE id=#{id}-->
+<!--    </update>-->
+<!--    &lt;!&ndash;删除收货地址数据&ndash;&gt;-->
+<!--    <delete id="deleteTakeAddress" parameterType="TakeAddress">-->
+<!--        DELETE FROM takeaddress WHERE id = #{id}-->
+<!--    </delete>-->
+</mapper>

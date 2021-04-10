@@ -1,4 +1,5 @@
 // pages/dg/dg.js
+var config = require("../../Config/config")
 Page({
 
   /**
@@ -33,20 +34,32 @@ formSubmit:function(e){
     //console.log(e.detail.startAdd.value);
     var startAdd = e.detail.value.startAdd
     var destinationAdd = e.detail.value.destinationAdd
-    console.log(startAdd+"-----"+destinationAdd)
+    var goods=e.detail.value.goods
+    console.log(startAdd+"-----"+destinationAdd+goods)
     if(this.checkStartAddress(startAdd) && 
     this.checkDestinationAddress(destinationAdd)){
-      wx.showToast({
-        title:'提交成功',
-        icon:'success',
-        duration:1500
+      wx.request({
+        url: config.HTTP_URL+config.setDgInfo_URL,//这里是要连接的本地服务器的地址              
+        data: {                
+        //这里是要携带的参数  
+            buyaddress:startAdd,
+            buyThings:goods,
+            deliveryaddress:destinationAdd,    
+        },              
+        method:'POST',              
+        header:{                
+        'content-type':'application/json',    
+        },
+        success(res)
+        {
+            console.log(res)
+        }
+      
       })
-    }
+        // 发送请求结束
+  }
   },
-  data: {
-
-  },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
