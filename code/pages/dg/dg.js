@@ -53,6 +53,11 @@ formSubmit:function(e){
         success(res)
         {
             console.log(res)
+            wx.showToast({
+              title:'提交成功',
+              icon:'success',
+              duration:1500
+            })
         }
       
       })

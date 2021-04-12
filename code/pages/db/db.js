@@ -1,4 +1,5 @@
 // pages/db/db.js
+var config=require("../../Config/config")
 Page({
 startAddress:function(e){
     this.checkStartAddress(e.detail.value)
@@ -39,10 +40,28 @@ formSubmit:function(e){
     var name=e.detail.value.name
     if(this.checkStartAddress(startAdd) && 
     this.checkNameChange(name) && this.checkTimeChange(time)){
-      wx.showToast({
-        title:'提交成功',
-        icon:'success',
-        duration:1500
+      wx.request({
+        url: config.HTTP_URL+config.setDbInfo_URL,//这里是要连接的本地服务器的地址              
+        data: {                
+        //这里是要携带的参数  
+        dbaffairs:name,
+        dbtime:time,
+            dbaddress:startAdd,    
+        },              
+        method:'POST',              
+        header:{                
+        'content-type':'application/json',    
+        },
+        success(res)
+        {
+            console.log(res)
+            wx.showToast({
+              title:'提交成功',
+              icon:'success',
+              duration:1500
+            })
+        }
+      
       })
     }
   },
