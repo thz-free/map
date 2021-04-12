@@ -5,9 +5,19 @@ Page({
   },
 //选择地址
 myAddress:function(e) {
-  wx.navigateTo({
-    url: '/pages/shAdd/shAdd',
-  })
+  console.log(wx.getStorageSync('userId'));
+  if(wx.getStorageSync('userId') != ''){
+    wx.navigateTo({
+      url: '/pages/shAdd/shAdd',
+    })
+  }else{
+    wx.showToast({
+      title: "请您先到个人资料注册！",
+      icon:'none',
+      duration:1500
+    })
+  }
+  
 },
 //选择图片
 chooseImage:function(){
@@ -49,35 +59,26 @@ if(!reg.test(data)){
 return true
 },
 formSubmit:function(e){
-  var startAdd = e.detail.value.startAdd
-  var destinationAdd = e.detail.value.destinationAdd
-  if(this.checkStartAddress(startAdd) && this.checkDestinationAddress(destinationAdd)){
-    wx.request({
-      url: config.HTTP_URL+config.setDnInfo_URL,//这里是要连接的本地服务器的地址              
-      data: {                
-      //这里是要携带的参数  
-          kdAddress:startAdd,
-          deliveryaddress:destinationAdd,    
-      },              
-      method:'POST',              
-      header:{                
-      'content-type':'application/json',    
-      },
-      success(res)
-      {
-          console.log(res)
-          wx.showToast({
-            title:'提交成功',
-            icon:'success',
-            duration:1500
-          })
-      }
-    
+  if(wx.getStorageSync('userId') !=  ''){
+    var startAdd = e.detail.value.startAdd
+    var destinationAdd = e.detail.value.destinationAdd
+    if(this.checkStartAddress(startAdd) && this.checkDestinationAddress(destinationAdd)){
+      wx.showToast({
+        title:'提交成功',
+        icon:'success',
+        duration:1500
+      })
+    }
+    this.setData({
+      addressContent:"8-528"
+    })
+  }else{
+    wx.showToast({
+      title: "请您先到个人资料注册！",
+      icon:'none',
+      duration:1500
     })
   }
-  this.setData({
-    addressContent:"8-528"
-  })
 },
 
   /**

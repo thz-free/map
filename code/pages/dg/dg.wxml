@@ -10,8 +10,18 @@
       <input name="startAdd" type="text" placeholder="北门超市" class="input" bindblur="startAddress"/>
     </view>
     <view class="dn">
-      <text class="label">送达地址\n\n</text>
-      <input name="destinationAdd"  placeholder="8-528" type="text" class="input"  bindblur="destinationAddress"/>
+      <view class="address">
+        <text class="label">送达地址\n\n</text>
+        <view  class="myAddress">
+          <text bindtap="myAddress" style="font-size: 10px;">我的地址</text>
+        </view>
+      </view>
+      <view wx:if="{{addressContent=='8-528'}}">
+        <input name="destinationAdd"  placeholder="{{addressContent}}" type="text" class="input"  bindblur="destinationAddress"/>
+      </view>
+      <view wx:else>
+        <input name="destinationAdd"  value="{{addressContent}}" type="text" class="input"  bindblur="destinationAddress"/>
+      </view>
     </view>
     <button form-type="submit">提交</button>
   </view>

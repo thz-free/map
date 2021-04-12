@@ -36,7 +36,7 @@
       </radio-group>
   </view>
   <view>
-    <button id="button" hover-class="wsui-btn__hover_list" hover-stay-time="50" formType="submit">提交</button>
+    <button id="button" hover-class="wsui-btn__hover_list" hover-stay-time="50" formType="submit">注册</button>
   </view>
 </form>
 </view>

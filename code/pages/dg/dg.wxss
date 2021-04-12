@@ -33,3 +33,9 @@ image {
   align-items: center;
   top: 20rpx;
 }
+.address{
+  display: flex;
+}
+.myAddress{
+  margin-left: 12px;
+}
