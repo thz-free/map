@@ -12,7 +12,7 @@ public interface ITakeAddressDao {
     //存储收货地址信息
     void setTakeAddress(TakeAddress takeAddress) throws Exception;
     //获取收货地址信息
-    List<TakeAddress> getTakeAddress() throws Exception;
+    List<TakeAddress> getTakeAddress(Integer  userid) throws Exception;
     //更改收货地址信息
     void updateTakeAddress(TakeAddress takeAddress) throws Exception;
     //删除指定收货地址信息

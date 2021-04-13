@@ -5,18 +5,18 @@
 <mapper namespace="com.example.map.dao.ITakeAddressDao">
     <!--存储收货地址数据-->
     <insert id="setTakeAddress" parameterType="TakeAddress">
-        INSERT INTO takeaddress (address,sex,phone,location,username) VALUES (#{address},#{sex},#{phone},#{location},#{username})
+        INSERT INTO addressinfo (address,sex,phone,location,username,userid) VALUES (#{address},#{sex},#{phone},#{location},#{username},#{userid})
     </insert>
     <!--获取收货地址数据-->
     <select id="getTakeAddress" resultType="TakeAddress">
-        select * from takeaddress
+        select * from addressinfo  where userid=#{userid}
     </select>
     <!--更改收货地址数据-->
     <update id="updateTakeAddress" parameterType="TakeAddress">
-        UPDATE takeaddress SET address=#{address},phone=#{phone},sex=#{sex},location=#{location},username=#{username} WHERE id=#{id}
+        UPDATE addressinfo SET address=#{address},phone=#{phone},sex=#{sex},location=#{location},username=#{username} WHERE id=#{id}
     </update>
     <!--删除收货地址数据-->
     <delete id="deleteTakeAddress" parameterType="TakeAddress">
-        DELETE FROM takeaddress WHERE id = #{id}
+        DELETE FROM addressinfo WHERE id = #{id}
     </delete>
 </mapper>

@@ -1,4 +1,3 @@
-// index.js
 // 获取应用实例
 const app = getApp()
 const config = require("../../Config/config")
@@ -35,6 +34,35 @@ Page({//注册当前页面
   onLoad() {
   },
   onShow(){
+    if(wx.getStorageSync('isRegister') == true){
+       //获取存储的数据开始,防止注册后要重新进入个人信息
+       wx.request({
+        url: config.HTTP_URL+config.GetUserinfo_URL,
+        method:'POST', 
+        data:{
+          wxphone:wx.getStorageSync('wxphone')
+        } ,            
+        header:{                
+        'content-type':'application/json',       
+        },
+        success(res){
+          //console.log("用户信息:",res)
+          const data = res.data.userinfo;
+          wx.setStorageSync('userId', data.userid);
+          //console.log("获取的数据",res)
+        },
+        fail(res){
+          wx.hideLoading();
+          wx.showModal({
+            title: '网络错误',
+            content: '网络出错，请刷新重试',
+            showCancel: false
+          })
+        }
+      })
+    //获取存储的数据结束                       
+    }
+
     //console.log(this.data)
     if (wx.getUserProfile) {
       this.setData({

@@ -7,6 +7,7 @@ public class TakeAddress {
     private String phone;
     private String location;
     private String username;
+    private String userid;
 
     public Integer getId() {
         return id;
@@ -56,6 +57,14 @@ public class TakeAddress {
         this.username = username;
     }
 
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
     @Override
     public String toString() {
         return "TakeAddress{" +
@@ -65,6 +74,7 @@ public class TakeAddress {
                 ", phone='" + phone + '\'' +
                 ", location='" + location + '\'' +
                 ", username='" + username + '\'' +
+                ", userid='" + userid + '\'' +
                 '}';
     }
 }

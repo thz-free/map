@@ -41,9 +41,10 @@ Page({
       data:{
         username:locationinfo.username,
         address:locationinfo.address,
-        tel:locationinfo.tel,
+        phone:locationinfo.tel,
         location:this.data.message,
-        sex:locationinfo.sex
+        sex:locationinfo.sex,
+        userid:wx.getStorageSync('userId')
       },
       method:'POST',              
       header:{                

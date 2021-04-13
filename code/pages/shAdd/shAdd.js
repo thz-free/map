@@ -1,3 +1,7 @@
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+var qqmapsdk = new QQMapWX({
+      key:require("../../Config/config").key
+});
 // pages/shAdd/shAdd.js
 const config = require("../../Config/config")
 Page({
@@ -38,7 +42,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      //获取当前城市
+      wx.getLocation({
+        type: 'wgs84',
+        success (res) {
+          qqmapsdk.reverseGeocoder({
+            success:function(res){
+              let city = res.result.address_component.city;
+              wx.setStorageSync('city', city);
+              console.log(city)
+            }
+          })
+        }
+      })
   },
 
   /**
@@ -56,6 +72,9 @@ Page({
       wx.request({
         url: config.HTTP_URL+config.GetTakeAddress_URL,
         method:"POST",
+        data:{
+          userid:wx.getStorageSync('userId')
+        },
         header:{                
           'content-type':'application/json',             
         },

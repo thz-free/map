@@ -46,7 +46,7 @@ Page({
   return true
   },
 formSubmit:function(e){
-  if(wx.getStorageSync('userId') != ''){
+  if(wx.getStorageSync('userId') != ' '){
     //console.log(e.detail.startAdd.value);
     var startAdd = e.detail.value.startAdd
     var destinationAdd = e.detail.value.destinationAdd
@@ -58,10 +58,10 @@ formSubmit:function(e){
         icon:'success',
         duration:1500
       })
+      this.setData({
+        addressContent:"8-528"
+      })
     }
-    this.setData({
-      addressContent:"8-528"
-    })
   }else{
     wx.showToast({
       title: "请您先到个人资料注册！",

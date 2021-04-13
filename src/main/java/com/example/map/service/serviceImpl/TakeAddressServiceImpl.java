@@ -30,8 +30,8 @@ public class TakeAddressServiceImpl implements TakeAddressService {
      * @throws Exception
      */
     @Override
-    public List<TakeAddress> getTakeAddress() throws Exception {
-        return iTakeAddressDao.getTakeAddress();
+    public List<TakeAddress> getTakeAddress(Integer  userid) throws Exception {
+        return iTakeAddressDao.getTakeAddress(userid);
     }
 
     /**

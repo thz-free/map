@@ -1,5 +1,5 @@
 module.exports={
-  HTTP_URL:"http://192.168.1.108:8080",
+  HTTP_URL:"http://192.168.1.104:8080",
   IsRegister_URL:"/isRegister",
   SetUserinfo_URL:"/setUserinfo",
   GetUserinfo_URL:"/getUserinfo",
@@ -13,5 +13,6 @@ module.exports={
   setDnInfo_URL:"/setDnInfo",
   setDbInfo_URL:"/setDbInfo",
   secret:"1dd31e8904ba78dc4933ce735435825f",
-  appid:'wxe5aec76fc17b9daa'
+  appid:'wxe5aec76fc17b9daa',
+  key:"3YOBZ-5BQKX-TNF4K-ZQZ76-WBVLT-HQFRZ"
 }

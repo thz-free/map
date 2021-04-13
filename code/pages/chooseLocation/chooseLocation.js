@@ -2,7 +2,7 @@ const city = require("../../utils/allcity")
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var City = require('../../utils/allcity')
 var qqmapsdk = new QQMapWX({
-      key:'3YOBZ-5BQKX-TNF4K-ZQZ76-WBVLT-HQFRZ'
+      key:require("../../Config/config").key
 });
 // pages/chooseLocation/chooseLocation.js
 Page({
@@ -41,7 +41,7 @@ Page({
     // console.log("options",options.detail)
     if(this.data.name == ""){
       
-        var name = "益阳市"  //定位的城市
+        var name = wx.getStorageSync('city')  //定位的城市
         var value = options.detail.value
       
     }else{
@@ -65,7 +65,7 @@ Page({
       let result = (typeof e.data) === 'string' ? JSON.parse(e.data) : e.data;
       let markers = []; //设置marker
       let includePoints = []; //设置包含点
-      // console.log(result)
+      console.log(result)
       if(options.detail.value != ""){
       for (let i = 0; i < result.data.length; i++) {
         markers.push({
@@ -101,30 +101,14 @@ Page({
         "page_index":1,
         "page_size":20
       }
-      // console.log("keyword",data.keyword);
-      // console.log("boundary",data.boundary);
+       console.log("keyword",data.keyword);
+       console.log("boundary",data.boundary);
         wx.serviceMarket.invokeService({
           service: 'wxc1c68623b7bdea7b',
           api: 'poiSearch',
           data: data
-        }).then(e=>{
-          // console.log(e.data);
-  
-          // // 发送请求开始
-          // wx.request({
-          //   url: 'http://192.168.1.103:8080/setLocaltion',//这里是要连接的本地服务器的地址              
-          //   data: {                
-          //   //这里是要携带的参数  
-          // "data":e.data         
-          //   },              
-          //   method:'POST',              
-          //   header:{                
-          //   'content-type':'application/json',
-          //   'x-token':""//这里是连接需要的token令牌 不需要请忽略              
-          //   }})
-          //   // 发送请求结束
-  
-            //存储搜索响应数据开始
+        }).then(e=>{             
+           //存储搜索响应数据开始
             let pois = '';
             let result = (typeof e.data) === 'string' ? JSON.parse(e.data) : e.data;
             let markers = []; //设置marker
@@ -168,7 +152,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
   },
 
   /**
@@ -185,18 +168,6 @@ Page({
     /**
      * 获取当前地点
      */
-    wx.getLocation({
-      type: 'wgs84',
-      success(res){
-        qqmapsdk.reverseGeocoder({
-          success:function(res){
-            let city = res.result.address_component.city;
-            // console.log("city:",city)
-            wx.setStorageSync('city', city)
-          }
-        })
-      },
-    })
     //  console.log("option",this.data)
     if(this.data.name == ""){
       var city = this.data.city
