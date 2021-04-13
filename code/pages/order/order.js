@@ -37,7 +37,26 @@ this.setData({orderList:list})
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(wx.getStorageSync('isregister') ==  0){
+      wx.showModal({
+        title: '提示',
+        content: '请您先注册!',
+        confirmText:'注册',
+        success (res) {
+          if (res.confirm) {
+            console.log('用户点击注册')
+            wx.navigateTo({
+              url: '/pages/userInfo/userInfo',
+              })
+          } else if (res.cancel) {
+            wx.switchTab({
+              url: '/pages/index/index',
+              })
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
   },
 
   /**

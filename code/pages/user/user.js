@@ -19,8 +19,8 @@ getMyInfo:function(e){
 },
 //个人资料点击跳转
 info:function(e){
-
-  if(wx.getStorageSync('isregister')){
+  console.log(wx.getStorageSync('isregister'))
+  if(wx.getStorageSync('isregister') == 1){
     wx.navigateTo({
       url: '/pages/userinfoList/userinfoList',
     })
@@ -50,7 +50,7 @@ service:function(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -68,16 +68,14 @@ service:function(e){
       url: config.HTTP_URL+config.IsRegister_URL,
       method:"POST",
       data:{
-        wxphone:wx.getStorageSync('wxphone')
+        openid:wx.getStorageSync('openid')
       },
       success(e){
         //console.log(e)
         //判断是否注册
-        if(e.data.isregister){
-          wx.setStorageSync('isregister', true)
-        }else{
-          wx.setStorageSync('isregister', false)
-        }
+
+          wx.setStorageSync('isregister', e.data.isregister)
+       
       }
     })
   },

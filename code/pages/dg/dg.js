@@ -7,8 +7,7 @@ Page({
    * 页面的初始数据
    */
   myAddress:function(e) {
-    console.log(wx.getStorageSync('userId'));
-    if(wx.getStorageSync('userId') != ''){
+    if(wx.getStorageSync('isregister') !=  0){
       wx.navigateTo({
         url: '/pages/shAdd/shAdd',
       })
@@ -46,7 +45,7 @@ Page({
   return true
   },
 formSubmit:function(e){
-  if(wx.getStorageSync('userId') != ' '){
+  if(wx.getStorageSync('isregister') !=  0){
     //console.log(e.detail.startAdd.value);
     var startAdd = e.detail.value.startAdd
     var destinationAdd = e.detail.value.destinationAdd

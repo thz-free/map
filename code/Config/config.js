@@ -12,7 +12,7 @@ module.exports={
   setDgInfo_URL:"/setDgInfo",
   setDnInfo_URL:"/setDnInfo",
   setDbInfo_URL:"/setDbInfo",
-  secret:"1dd31e8904ba78dc4933ce735435825f",
-  appid:'wxe5aec76fc17b9daa',
-  key:"3YOBZ-5BQKX-TNF4K-ZQZ76-WBVLT-HQFRZ"
+  secret:"d51a1533fa18e8b33534ef73a326fa4e",
+  appid:'wx68fd34d6b27b8e78',
+  key:"WXCBZ-UPICJ-5V3FI-KA5U4-UMB2J-57B6A"
 }

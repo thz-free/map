@@ -1,44 +1,60 @@
 // app.js
-const secret = "d51a1533fa18e8b33534ef73a326fa4e";
-const appid = 'wx68fd34d6b27b8e78';
-import requestUrl from './utils/util.js'
+const config = require("./Config/config")
 App({//小程序注册
-  onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-    // 登录
+  onLaunch (options) {
+    // Do something initial when launch.
     wx.login({
-      success: res => {
-        //console.log("code:",res.code)
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        if(res.code){
-          requestUrl.requestUrl({
-           // url: "/QXEV/xxx/xxx",
-            params:{
-                 code:res.code
-            },
-            method:"post",
-            })
-            .then((data)=> {//then接收一个参数，是函数，并且会拿到我们在requestUrl中调用resolve时传的的参数
-               console.log(data);//返回openId
-               this.globalData.openId = res.openId;
-            })
-            .catch((errorMsg)=>{
-              console.log(errorMsg)
-            })
-         }
+      success(e){
+        wx.request({
+          url: config.HTTP_URL+config.AuthorizeLogin_URL,
+          method:"POST",
+          data:{
+            appid:config.appid,
+            secret:config.secret,
+            code:e.code
+          },
+          success(e){
+            if(e.data.msg == "ok") {
+              wx.setStorageSync('openid', e.data.openid);
+              wx.setStorageSync('isRegister', true) //是否授权
+              if(wx.getStorageSync('isRegister') == true){
+                //获取存储的数据开始,防止注册后要重新进入个人信息
+                wx.request({
+                 url: config.HTTP_URL+config.GetUserinfo_URL,
+                 method:'POST', 
+                 data:{
+                   openid:wx.getStorageSync('openid')
+                 } ,            
+                 header:{                
+                 'content-type':'application/json',       
+                 },
+                 success(res){
+                   console.log("用户信息:",res)
+                   const data = res.data.userinfo;
+                   wx.setStorageSync('isregister', data.isregister);
+                   wx.setStorageSync('userId', data.userid);
+                   console.log("data.isregister:",wx.getStorageSync('isregister'))
+                   console.log("userId:",data)
+                 },
+                 fail(res){
+                   wx.hideLoading();
+                   wx.showModal({
+                     title: '网络错误',
+                     content: '网络出错，请刷新重试',
+                     showCancel: false
+                   })
+                 }
+               })
+             //获取存储的数据结束                       
+             }
+            }
+          },
+          fail(e){
+            console.log("获取异常！")
+          }
+        })
+        console.log(e)
       }
     })
-  },
-  globalData: {
-    userInfo: "",//用户信息
-    openId:"",//登录用户的唯一标识
-    appid: appid,//appid  
-    secret: secret,//secret秘钥
-  },
-  onHide:function(){//小程序退出时触发的事件
-    console.log("小程序完全退出了")
   }
 })

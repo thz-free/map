@@ -1,21 +1,21 @@
 <!--index.wxml-->
 <view class="index">
- <image src="/images/index/bg.jpg" class="index-image"></image>
-<!-- main -->
- <view>
- <view>
+  <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0138d4a847b4148286.jpg%3Fsize%3D640x356&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620893149&t=46dc76dcf32b183dcdf60943f55b7d3e" class="index-image"></image>
+ <!-- main -->
+  <view>
+  <view>
+  </view>
+    <image src="https://iconfont.alicdn.com/t/0e2179c9-0dff-4b4a-b5f9-a11a26f9613d.png" class="index-function" bindtap="dn"></image>
+    <image src="https://iconfont.alicdn.com/t/388eed99-e203-4a96-a48c-118c038b709f.png" class="index-function" bindtap="dg"></image>
+    <image src="https://iconfont.alicdn.com/t/d7acc73f-5bc9-474d-9cfc-fa25a0078b0b.png" class="index-function" bindtap="db"></image>
+  </view>
+  <view>
+    <text class="index-text">代拿</text>
+    <text class="index-text">代购</text>
+    <text class="index-text">代办</text>
+  </view>
+  <!-- foot -->
+  <view>
+    
+  </view>
  </view>
-   <image src="/images/index/dn1.png" class="index-function" bindtap="dn"></image>
-   <image src="/images/index/gwc1.png" class="index-function" bindtap="dg"></image>
-   <image src="/images/index/db1.png" class="index-function" bindtap="db"></image>
- </view>
- <view>
-   <text class="index-text">代拿</text>
-   <text class="index-text">代购</text>
-   <text class="index-text">代办</text>
- </view>
- <!-- foot -->
- <view>
-   
- </view>
-</view>

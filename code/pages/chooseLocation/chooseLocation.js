@@ -1,4 +1,3 @@
-const city = require("../../utils/allcity")
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var City = require('../../utils/allcity')
 var qqmapsdk = new QQMapWX({
@@ -6,12 +5,12 @@ var qqmapsdk = new QQMapWX({
 });
 // pages/chooseLocation/chooseLocation.js
 Page({
-
+  
   /**
    * 页面的初始数据
    */
   data: {
-      city:wx.getStorageSync('city'),
+      city:"",
       isBack:true,
       chooseCity:"",
       name:"",
@@ -22,7 +21,14 @@ Page({
     console.log(e.currentTarget.dataset.index)
     console.log("message",wx.getStorageSync('detailedLocation'))
     let index = e.currentTarget.dataset.index;
+    let pages = getCurrentPages() //当前页面
+    let prevPage = pages[pages.length - 2] // 上一页面
     let detailed = wx.getStorageSync('detailedLocation')
+    prevPage.setData({
+      message:detailed[index].title,
+      detailed:detailed[index],
+      ischoose:false
+    })
     wx.setStorageSync('detailed', detailed[index])
     wx.setStorageSync('ischoose', false)
     wx.navigateBack({
@@ -165,16 +171,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (options) {
+    console.log(wx.getStorageSync('city'))
+    console.log(this.data.isBack);
+    console.log(this.data.city);
+    console.log(this.data.chooseCity)
     /**
      * 获取当前地点
      */
     //  console.log("option",this.data)
+    this.setData({city:wx.getStorageSync('city')})
     if(this.data.name == ""){
       var city = this.data.city
     }else{
       var city = this.data.name
     }
-    // console.log("city:",city)
+     console.log("city:",city)
 
     wx.showLoading({
       title: '加载中',
@@ -199,21 +210,6 @@ Page({
       }).then(e=>{
         // console.log(e.data.data);
         wx.setStorageSync('detailedLocation', e.data.data)
-
-        // 发送请求开始
-        // wx.request({
-        //   url: 'http://192.168.1.103:8080/setLocaltion',//这里是要连接的本地服务器的地址              
-        //   data: {                
-        //   //这里是要携带的参数  
-        // "data":e.data         
-        //   },              
-        //   method:'POST',              
-        //   header:{                
-        //   'content-type':'application/json',
-        //   'x-token':""//这里是连接需要的token令牌 不需要请忽略              
-        //   }})
-        //   // 发送请求结束
-
           //存储搜索响应数据开始
           let pois = '';
           let result = (typeof e.data) === 'string' ? JSON.parse(e.data) : e.data;

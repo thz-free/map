@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/order/order",
     "pages/user/user",
@@ -13,7 +14,6 @@
     "pages/service/service",
     "pages/publish/publish",
     "pages/publicDetail/publicDetail",
-    "pages/authorize/authorize",
     "pages/shAdd/shAdd",
     "pages/chooseCity/chooseCity",
     "pages/chooseLocation/chooseLocation",
@@ -38,28 +38,24 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "/images/index/zy_1.png",
-        "selectedIconPath": "/images/index/zy_1.png"
+        "iconPath": "/lib/icon/zhuye.png",
+        "selectedIconPath": "/lib/icon/zhuye.png"
       },
       {
         "pagePath": "pages/order/order",
-        "iconPath": "/images/index/sd.png",
-        "selectedIconPath": "/images/index/sd.png"
+        "iconPath": "/lib/icon/dingdan.png",
+        "selectedIconPath": "/lib/icon/dingdan.png"
       },
       {
         "pagePath": "pages/user/user",
-        "iconPath": "/images/index/gr.png",
-        "selectedIconPath": "/images/index/gr.png"
+        "iconPath": "/lib/icon/wode.png",
+        "selectedIconPath": "/lib/icon/wode.png"
       }
     ]
   },
   "permission": {
-
     "scope.userLocation": {
-    
-    "desc": "你的位置信息将用于小程序位置接口的效果展示"
-    
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-    
-    }
+  }
 }

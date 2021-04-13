@@ -48,6 +48,7 @@ Page({
         success (res) {
           qqmapsdk.reverseGeocoder({
             success:function(res){
+              console.log(res)
               let city = res.result.address_component.city;
               wx.setStorageSync('city', city);
               console.log(city)

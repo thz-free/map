@@ -5,23 +5,23 @@
 <mapper namespace="com.example.map.dao.IUserinfoDao">
     <!--判断是否授权-->
     <select id="isAuthorize" resultType="Userinfo">
-        SELECT * FROM userinfo WHERE wxphone=#{wxphone}
+        SELECT * FROM userinfo WHERE openid=#{openid}
     </select>
     <!--判断是否注册-->
     <select id="isRegister" resultType="Integer">
-        SELECT isregister FROM userinfo WHERE wxphone=#{wxphone}
+        SELECT isregister FROM userinfo WHERE openid=#{openid}
     </select>
     <!--插入授权数据-->
     <insert id="authorizeLogin" parameterType="Userinfo">
-        INSERT INTO userinfo (wxphone,isregister,grabcounts,putcounts,isdaina) VALUES (#{wxphone},#{isregister},#{grabcounts},#{putcounts},#{isdaina})
+        INSERT INTO userinfo (openid,isregister,grabcounts,putcounts,isdaina) VALUES (#{openid},#{isregister},#{grabcounts},#{putcounts},#{isdaina})
     </insert>
     <!--保存用户信息-->
     <update id="setUserinfo" parameterType="Userinfo">
-        UPDATE userinfo SET username=#{username},studentcode=#{studentCode},isregister=#{isregister},userphone=#{userphone},isdaina=#{isdaina}  WHERE wxphone=#{wxphone}
+        UPDATE userinfo SET username=#{username},studentcode=#{studentCode},isregister=#{isregister},userphone=#{userphone},isdaina=#{isdaina}  WHERE openid=#{openid}
     </update>
     <!--获取用户信息-->
     <select id="getUserinfo" resultType="Userinfo">
-        select * from userinfo where wxphone=#{wxphone}
+        select * from userinfo where openid=#{openid}
     </select>
     <!--更改用户信息-->
     <update id="updateUserinfo" parameterType="Userinfo">

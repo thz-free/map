@@ -9,15 +9,15 @@
 <!--列表-->
 <view id='myList'>
   <view class="item" bindtap="info">个人资料
-    <image class="icon_1" src="../../images/index/yjt1.png"></image>
+    <!-- <image class="icon_1" src="../../images/index/yjt1.png"></image> -->
   </view>
   <view class="item" bindtap="orderSearch">已接订单查询
-    <image class="icon" src="../../images/index/yjt1.png"></image>
+    <!-- <image class="icon" src="../../images/index/yjt1.png"></image> -->
   </view>
   <view class="item" bindtap="publish">已发布订单查询
-    <image class="icon_2" src="../../images/index/yjt1.png"></image>
+    <!-- <image class="icon_2" src="../../images/index/yjt1.png"></image> -->
   </view>
   <view class="item" bindtap="service">客服联系方式
-    <image class="icon" src="../../images/index/yjt1.png"></image>
+    <!-- <image class="icon" src="../../images/index/yjt1.png"></image> -->
   </view>
 </view>

@@ -2,7 +2,7 @@ package com.example.map.domain;
 
 public class Userinfo {
     private Integer userid;
-    private String wxphone;
+    private String openid;
     private String username;
     private String studentCode;
     private Integer isregister;  //1为注册
@@ -12,21 +12,21 @@ public class Userinfo {
     private Integer putcounts;
 
     public Userinfo(){};
-    public Userinfo(String wxphone, Integer isregister, Integer isdaina, Integer grabcounts, Integer putcounts) {
-        this.wxphone = wxphone;
+    public Userinfo(String openid, Integer isregister, Integer isdaina, Integer grabcounts, Integer putcounts) {
+        this.openid = openid;
         this.isregister = isregister;
         this.isdaina = isdaina;
         this.grabcounts = grabcounts;
         this.putcounts = putcounts;
     }
 
-    public Userinfo(String username, String studentCode, Integer isregister, String userphone, Integer isdaina,String wxphone) {
+    public Userinfo(String username, String studentCode, Integer isregister, String userphone, Integer isdaina,String openid) {
         this.username = username;
         this.studentCode = studentCode;
         this.isregister = isregister;
         this.userphone = userphone;
         this.isdaina = isdaina;
-        this.wxphone = wxphone;
+        this.openid = openid;
     }
 
     public Integer getUserid() {
@@ -38,11 +38,11 @@ public class Userinfo {
     }
 
     public String getWxphone() {
-        return wxphone;
+        return openid;
     }
 
     public void setWxphone(String wxphone) {
-        this.wxphone = wxphone;
+        this.openid = wxphone;
     }
 
     public String getUsername() {
@@ -105,7 +105,7 @@ public class Userinfo {
     public String toString() {
         return "Userinfo{" +
                 "userid=" + userid +
-                ", wxphone='" + wxphone + '\'' +
+                ", openid='" + openid + '\'' +
                 ", username='" + username + '\'' +
                 ", studentCode='" + studentCode + '\'' +
                 ", isregister=" + isregister +
