@@ -2,6 +2,7 @@ package com.example.map.service.serviceImpl;
 
 import com.example.map.dao.IDnInfoDao;
 import com.example.map.domain.dninfo;
+import com.example.map.domain.orderinfo;
 import com.example.map.service.DnInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,10 @@ public class DnInfoServiceImpl implements DnInfoService {
     @Override
     public void setDnInfo(dninfo dnInfo) throws Exception {
        dnInfoDao.setDnInfo(dnInfo);
+    }
+
+    @Override
+    public void setOrderInfo(orderinfo orderInfo) throws Exception {
+        dnInfoDao.setOrderInfo(orderInfo);
     }
 }

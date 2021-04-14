@@ -60,6 +60,20 @@ formSubmit:function(e){
               icon:'success',
               duration:1500
             })
+            wx.switchTab({
+              url: '../index/index',
+            })
+        },
+        fail(res){
+          wx.hideLoading();
+          wx.switchTab({
+            url: '../index/index',
+          })
+          wx.showModal({
+            title: '网络错误',
+            content: '网络出错，请刷新重试',
+            showCancel: false
+          })
         }
       
       })
