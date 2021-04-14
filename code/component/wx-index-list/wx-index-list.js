@@ -1,7 +1,8 @@
 // component/wx-index-list/wx-index-list.js
+const config　=　require("../../Config/config");
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk = new QQMapWX({
-      key:'3YOBZ-5BQKX-TNF4K-ZQZ76-WBVLT-HQFRZ'
+      key:config.key
 });
 Component({
     /**
@@ -67,9 +68,9 @@ Component({
     },
     ready() {
         let data = this.data.data;
-        if (this.data.myCity) {
-          this.getCity()
-        }
+        // if (this.data.myCity) {
+        //   this.getCity()
+        // }
     },
     methods: {
         /**
@@ -101,36 +102,35 @@ Component({
                 }
             })
         },
-        getCity() {
-                  // console.log("keyword",res.keyword);
-                  // console.log("boundary",res.boundary);
-                  wx.getLocation({
-                    type: 'wgs84',
-                    success (res) {
-                      const latitude = res.latitude
-                      const longitude = res.longitude
-                      qqmapsdk.reverseGeocoder({
-                        success:function(res){
-                          let city = res.result.address_component.city;
-                        //   wx.showToast({
-                        //     title: `您当前的城市为${res.result.address_component.city}`,
-                        //     duration: 4000,
-                        //     mask: false,
-                        //     icon: 'none'
-                        //   })
-                          wx.setStorageSync('city', city);
-                          let result = res.result;
-                        //   console.log(res);
-                        //   console.log(result);
-                        //   console.log("城市",city);
-                        }
-                      })
-                    //   console.log("latitude",latitude);
-                    //   console.log("longitude",longitude);
+        // getCity() {
+        //           // console.log("keyword",res.keyword);
+        //           // console.log("boundary",res.boundary);
+        //           wx.getLocation({
+        //             type: 'wgs84',
+        //             success (res) {
+        //               const latitude = res.latitude
+        //               const longitude = res.longitude
+        //               qqmapsdk.reverseGeocoder({
+        //                 success:function(res){
+        //                   let city = res.result.address_component.city;
+        //                 //   wx.showToast({
+        //                 //     title: `您当前的城市为${res.result.address_component.city}`,
+        //                 //     duration: 4000,
+        //                 //     mask: false,
+        //                 //     icon: 'none'
+        //                 //   })
+        //                   wx.setStorageSync('city', city);
+        //                   let result = res.result;
+        //                 //   console.log(res);
+        //                 //   console.log(result);
+        //                 //   console.log("城市",city);
+        //                 }
+        //               })
+                    
                       
-                    }
-                   })
-        },
+        //             }
+        //            })
+        // },
         /**
          * 右侧字母点击事件
          */

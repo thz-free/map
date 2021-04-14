@@ -24,7 +24,7 @@ Page({
         userphone:phone,
         studentCode:studentCode,
         isDaina:isDaina,
-        wxphone:wx.getStorageSync('wxphone')         
+        openid:wx.getStorageSync('openid')         
       },              
       method:'POST',              
       header:{                
@@ -85,7 +85,7 @@ Page({
         url: config.HTTP_URL+config.GetUserinfo_URL,
         method:'POST', 
         data:{
-          wxphone:wx.getStorageSync('wxphone')
+          openid:wx.getStorageSync('openid')
         } ,            
         header:{                
         'content-type':'application/json',       

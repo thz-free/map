@@ -5,18 +5,9 @@ Page({
   },
 //选择地址
 myAddress:function(e) {
-  console.log(wx.getStorageSync('userId'));
-  if(wx.getStorageSync('userId') != ''){
-    wx.navigateTo({
-      url: '/pages/shAdd/shAdd',
-    })
-  }else{
-    wx.showToast({
-      title: "请您先到个人资料注册！",
-      icon:'none',
-      duration:1500
-    })
-  }
+  wx.navigateTo({
+    url: '/pages/shAdd/shAdd',
+  })
   
 },
 //选择图片
@@ -59,7 +50,7 @@ if(!reg.test(data)){
 return true
 },
 formSubmit:function(e){
-  if(wx.getStorageSync('userId') !=  ' '){
+  if(wx.getStorageSync('isregister') !=  0){
     var startAdd = e.detail.value.startAdd
     var destinationAdd = e.detail.value.destinationAdd
     if(this.checkStartAddress(startAdd) && this.checkDestinationAddress(destinationAdd)){

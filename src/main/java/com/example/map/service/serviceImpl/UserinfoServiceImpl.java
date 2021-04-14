@@ -29,25 +29,25 @@ public class UserinfoServiceImpl implements UserinfoService {
 
     /**
      * 判断是否授权
-     * @param wxphone
+     * @param openid
      * @return
      * @throws Exception
      */
     @Override
-    public boolean isAuthorize(String wxphone) throws Exception {
-        return iUserinfoDao.isAuthorize(wxphone) == null ? false : true;
+    public boolean isAuthorize(String openid) throws Exception {
+        return iUserinfoDao.isAuthorize(openid) == null ? false : true;
     }
 
     /**
      * 判断是否注册
-     * @param wxphone
+     * @param openid
      * @return
      * @throws Exception
      */
     @Override
-    public boolean isRegister(String wxphone) throws Exception {
-        System.out.println(iUserinfoDao.isRegister(wxphone));
-        return iUserinfoDao.isRegister(wxphone) == 1 ? true : false;
+    public boolean isRegister(String openid) throws Exception {
+        System.out.println(iUserinfoDao.isRegister(openid));
+        return iUserinfoDao.isRegister(openid) == 1 ? true : false;
     }
 
     /**
@@ -66,8 +66,8 @@ public class UserinfoServiceImpl implements UserinfoService {
      * @throws Exception
      */
     @Override
-    public Userinfo getUserinfo(String wxphone) throws Exception {
-        return iUserinfoDao.getUserinfo(wxphone);
+    public Userinfo getUserinfo(String openid) throws Exception {
+        return iUserinfoDao.getUserinfo(openid);
     }
 
 

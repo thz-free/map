@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface UserinfoService {
     void authorizeLogin(Userinfo userinfo)throws Exception;
-    boolean isAuthorize(String wxphone)throws Exception;
-    boolean isRegister(String wxphone)throws Exception;
+    boolean isAuthorize(String openid)throws Exception;
+    boolean isRegister(String openid)throws Exception;
     void setUserinfo(Userinfo userinfo)throws Exception;
-    Userinfo getUserinfo(String wxphone) throws Exception;
+    Userinfo getUserinfo(String openid) throws Exception;
 }

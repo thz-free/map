@@ -97,12 +97,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (options) {
-    // console.log(wx.getStorageSync('detailed'))
-    this.setData({
-      message:wx.getStorageSync('detailed').title,
-      ischoose:wx.getStorageSync('ischoose'),
-    })
-    wx.setStorageSync('ischoose', true)
+     console.log(this.data.ischoose)
+     console.log(this.data)
+    if(!this.data.ischoose){
+      wx.setStorageSync('ischoose', true)
+    }
   },
 
   /**

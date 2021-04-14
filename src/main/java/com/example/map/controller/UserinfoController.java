@@ -30,9 +30,9 @@ public class UserinfoController {
             RestTemplate restTemplate = new RestTemplate();
             String forObject = restTemplate.getForObject(url, String.class);
             JSONObject jsonObject = JSONObject.parseObject(forObject);  //字符串转成json
-            System.out.println(jsonObject.getString("session_key"));
+            System.out.println(jsonObject.getString("openid"));
             System.out.println(jsonObject);
-            sessionKey = jsonObject.getString("session_key");
+            sessionKey = jsonObject.getString("openid");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,33 +51,25 @@ public class UserinfoController {
         //存入的值：wxphone,isregister,grabcounts,putcounts,isdaina
         //System.out.println(jsonObject.toJSONString());
         String appid = jsonObject.getString("appid");
-        String encryptedData = jsonObject.getString("encryptedData");
         String code = jsonObject.getString("code");
         String secret = jsonObject.getString("secret");
-        String iv = jsonObject.getString("iv");
 
         JSONObject resultJson = new JSONObject();
 
         //1.获取sessionKey
-        String sessionKey = getSessionKey(appid,secret,code);
+        String openid = getSessionKey(appid,secret,code);
         //2.获取手机号
         //解密获取结果
         try {
-            String result = WXCore.decrypt(appid,encryptedData,sessionKey,iv);
-            JSONObject parseObject = JSONObject.parseObject(result);
-            //System.out.println(parseObject);
             //防止空指针异常
-            if(parseObject!=null) {
-                //获取的该手机号并不一定为非空，所以后面需要判断phone是否为null或者""
-                String wxphone = parseObject.getString("phoneNumber");
-                //System.out.println(wxphone);
-                if(userinfoService.isAuthorize(wxphone)) {
+            if(openid!=null) {
+                if(userinfoService.isAuthorize(openid)) {
                     resultJson.put("msg", "ok");
                 } else {
-                    userinfoService.authorizeLogin(new Userinfo(wxphone, 0, 0, 0, 0));
+                    userinfoService.authorizeLogin(new Userinfo(openid, 0, 0, 0, 0));
                     resultJson.put("msg", "ok");
                 }
-                resultJson.put("wxphone",wxphone);
+                resultJson.put("openid",openid);
             }else {
                 resultJson.put("msg", "fail");
                 return null;
@@ -97,15 +89,14 @@ public class UserinfoController {
     @ResponseBody
     @RequestMapping(value = "/isRegister",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public String isRegister(@RequestBody JSONObject jsonObject){
-        String wxphone = jsonObject.getString("wxphone");
-        //System.out.println("phone"+wxphone);
+        String openid = jsonObject.getString("openid");
         JSONObject result = new JSONObject();
         try {
            //判断是否注册
-            if(userinfoService.isRegister(wxphone)){
-                result.put("isregister",true);
+            if(userinfoService.isRegister(openid)){
+                result.put("isregister",1);
             }else {
-                result.put("isregister",false);
+                result.put("isregister",0);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,7 +115,7 @@ public class UserinfoController {
         JSONObject result = new JSONObject();
         try {
             int isdaina = jsonObject.getString("isDaina").equals("false") ? 0 : 1;
-            userinfoService.setUserinfo(new Userinfo(jsonObject.getString("username"),jsonObject.getString("studentCode"),1,jsonObject.getString("userphone"),isdaina,jsonObject.getString("wxphone")));
+            userinfoService.setUserinfo(new Userinfo(jsonObject.getString("username"),jsonObject.getString("studentCode"),1,jsonObject.getString("userphone"),isdaina,jsonObject.getString("openid")));
             result.put("msg","ok");
             System.out.println("用户信息保存成功！");
         } catch (Exception e) {
@@ -146,7 +137,7 @@ public class UserinfoController {
     public String getUserinfo(@RequestBody JSONObject jsonObject){
         JSONObject result = new JSONObject();
         try {
-            result.put("userinfo",userinfoService.getUserinfo(jsonObject.getString("wxphone")));
+            result.put("userinfo",userinfoService.getUserinfo(jsonObject.getString("openid")));
             result.put("msg","ok");
         } catch (Exception e) {
             result.put("msg","fail");
