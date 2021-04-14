@@ -1,6 +1,7 @@
 // app.js
 const config = require("./Config/config")
 App({//小程序注册
+  
   onLaunch (options) {
     // Do something initial when launch.
     wx.login({

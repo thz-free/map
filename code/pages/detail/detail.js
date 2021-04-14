@@ -1,10 +1,25 @@
 // pages/detail/detail.js
 var common=require('../../utils/common')
+const config = require("../../Config/config")
 Page({
   //添加到已强订单中
   addFavorites: function(options){
     let order=this.data.order;//获取当前订单 
     wx.setStorageSync(order.id, order);//添加到本地缓存
+    wx.request({
+      url: config.HTTP_URL+config.GrapOrder_URL,
+      method:"POST",
+      header:{
+        'content-type':'application/json',
+      },
+      data:{
+        id:order.id,
+        type:order.type,
+        state:order.state,
+        userid:order.userid,
+        grapUserid:""//抢单者的userid
+      }
+    })
     this.setData({isAdd:true});//更新按钮显示
   },
   //取消抢单

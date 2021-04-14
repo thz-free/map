@@ -49,18 +49,34 @@ formSubmit:function(e){
     //console.log(e.detail.startAdd.value);
     var startAdd = e.detail.value.startAdd
     var destinationAdd = e.detail.value.destinationAdd
+    var goods=e.detail.value.goods
     console.log(startAdd+"-----"+destinationAdd)
     if(this.checkStartAddress(startAdd) && 
     this.checkDestinationAddress(destinationAdd)){
-      wx.showToast({
-        title:'提交成功',
-        icon:'success',
-        duration:1500
-      })
-      this.setData({
-        addressContent:"8-528"
-      })
-    }
+      wx.request({
+        url: config.HTTP_URL+config.setDgInfo_URL,//这里是要连接的本地服务器的地址              
+        data: {                
+        //这里是要携带的参数  
+            buyaddress:startAdd,
+            buyThings:goods,
+            deliveryaddress:destinationAdd,    
+        },              
+        method:'POST',              
+        header:{                
+        'content-type':'application/json',    
+        },success(res)
+        {
+            console.log(res)
+            wx.showToast({
+              title:'提交成功',
+              icon:'success',
+              duration:1500
+            })
+            this.setData({
+              addressContent:"8-528"
+            })
+        }
+    })
   }else{
     wx.showToast({
       title: "请您先到个人资料注册！",
@@ -69,7 +85,7 @@ formSubmit:function(e){
     })
   }
   
-  },
+  }},
 
   /**
    * 生命周期函数--监听页面加载
