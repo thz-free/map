@@ -7,4 +7,13 @@
     <insert id="setDbInfo" parameterType="dbinfo">
         INSERT INTO dbinfo (dbaffairs,dbaddress,dbtime) VALUES (#{dbaffairs},#{dbaddress},#{dbtime})
     </insert>
+
+    <insert id="setOrderInfo" parameterType="orderinfo">
+        INSERT INTO orderinfo (type,title,state) VALUES (#{type},#{title},#{state})
+    </insert>
+    <select id="findByType" resultType="orderinfo">select * from orderinfo where type =#{type}</select>
+
+<!--    <select id="findByIdDbaffairs" resultType="dbinfo">-->
+<!--        select dbaffairs from dbinfo where id =#{id}-->
+<!--    </select>-->
 </mapper>

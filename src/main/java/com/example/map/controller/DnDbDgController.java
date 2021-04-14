@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.map.domain.dbinfo;
 import com.example.map.domain.dginfo;
 import com.example.map.domain.dninfo;
+import com.example.map.domain.orderinfo;
 import com.example.map.service.DbInfoService;
 import com.example.map.service.DgInfoService;
 import com.example.map.service.DnInfoService;
@@ -33,6 +34,12 @@ public class DnDbDgController {
     public String setDbInfoController(@RequestBody(required = false) dbinfo dbinfo1) throws Exception {
         JSONObject result = new JSONObject();
         dbInfoService.setDbInfo(dbinfo1);
+        //生成代办订单
+        orderinfo orderinfo1=new orderinfo();
+        orderinfo1.setType(0);
+        orderinfo1.setState(false);
+        orderinfo1.setTitle(dbinfo1.getDbaffairs());
+        dbInfoService.setOrderInfo(orderinfo1);
         System.out.println("xinxi:"+dbinfo1);
         result.put("message","代办订单发布成功");
         log.info(result.toJSONString());
@@ -43,6 +50,12 @@ public class DnDbDgController {
     public String setDgInfoController(@RequestBody(required = false) dginfo dginfo1) throws Exception {
         JSONObject result = new JSONObject();
         dgInfoService.setDgInfo(dginfo1);
+        //生成代购订单
+        orderinfo orderinfo1=new orderinfo();
+        orderinfo1.setType(1);
+        orderinfo1.setState(false);
+        orderinfo1.setTitle(dginfo1.getBuyThings());
+        dbInfoService.setOrderInfo(orderinfo1);
         result.put("message","代购订单发布成功");
         log.info(result.toJSONString());
         return result.toJSONString();
@@ -51,8 +64,20 @@ public class DnDbDgController {
     public String setDnInfoController(@RequestBody(required = false) dninfo dninfo1) throws Exception {
         JSONObject result=new JSONObject();
         dnInfoService.setDnInfo(dninfo1);
+        //生成代拿订单
+        orderinfo orderinfo1=new orderinfo();
+        orderinfo1.setType(2);
+        orderinfo1.setState(false);
+        orderinfo1.setTitle(dninfo1.getDeliveryaddress());
+        dbInfoService.setOrderInfo(orderinfo1);
         result.put("message","代拿订单发布成功");
         log.info(result.toJSONString());
         return result.toJSONString();
+    }
+//查询订单
+    @GetMapping("/findByType")
+    public orderinfo findByType(int type) throws Exception {
+
+        return dbInfoService.findByType(type);
     }
 }

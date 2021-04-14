@@ -1,5 +1,5 @@
 module.exports={
-  HTTP_URL:"http://192.168.1.104:8080",
+  HTTP_URL:"http://192.168.1.101:8080",
   IsRegister_URL:"/isRegister",
   SetUserinfo_URL:"/setUserinfo",
   GetUserinfo_URL:"/getUserinfo",
