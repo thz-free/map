@@ -1,4 +1,8 @@
 // pages/dg/dg.js
+<<<<<<< HEAD
+=======
+var config=require("../../Config/config")
+>>>>>>> parent of 540d0bf (Revert "Merge branch 'main' of https://github.com/thz-free/map into main")
 Page({
   data:{
     addressContent:"8-528"
@@ -72,6 +76,12 @@ formSubmit:function(e){
               icon:'success',
               duration:1500
             })
+<<<<<<< HEAD
+=======
+            wx.switchTab({
+              url: '../index/index',
+            })
+>>>>>>> parent of 540d0bf (Revert "Merge branch 'main' of https://github.com/thz-free/map into main")
             this.setData({
               addressContent:"8-528"
             })
