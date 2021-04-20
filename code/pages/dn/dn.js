@@ -1,5 +1,5 @@
 // pages/dn/dn.js
-const config = require("../../Config/config")
+var config=require("../../Config/config")
 Page({
   data:{
     addressContent:"8-528"
@@ -61,7 +61,8 @@ formSubmit:function(e){
         data: {                
         //这里是要携带的参数  
             kdAddress:startAdd,
-            deliveryaddress:destinationAdd,    
+            deliveryaddress:destinationAdd,  
+            // userid:wx.getStorageSync('userId')
         },              
         method:'POST',              
         header:{                
@@ -74,6 +75,9 @@ formSubmit:function(e){
               title:'提交成功',
               icon:'success',
               duration:1500
+            })
+            wx.switchTab({
+              url: '../index/index',
             })
             that.setData({
               addressContent:"8-528"
