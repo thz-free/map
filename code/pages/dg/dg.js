@@ -1,4 +1,5 @@
 // pages/dg/dg.js
+var config=require("../../Config/config")
 Page({
   data:{
     addressContent:"8-528"
@@ -71,6 +72,9 @@ formSubmit:function(e){
               title:'提交成功',
               icon:'success',
               duration:1500
+            })
+            wx.switchTab({
+              url: '../index/index',
             })
             this.setData({
               addressContent:"8-528"

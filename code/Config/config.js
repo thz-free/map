@@ -1,5 +1,5 @@
 module.exports={
-  HTTP_URL:"http://192.168.1.101:8080",
+  HTTP_URL:"http://10.31.102.224:8080",
   IsRegister_URL:"/isRegister",
   SetUserinfo_URL:"/setUserinfo",
   GetUserinfo_URL:"/getUserinfo",
@@ -9,6 +9,7 @@ module.exports={
   UpdateTakeAddress_URL:"/updateTakeAddress",
   DeleteTakeAddress_URL:"/deleteTakeAddress",
   AuthorizeLogin_URL:"/authorizeLogin",
+  FindByType_URL:"/findByType",
   setDgInfo_URL:"/setDgInfo",
   setDnInfo_URL:"/setDnInfo",
   setDbInfo_URL:"/setDbInfo",
