@@ -1,4 +1,5 @@
 // pages/dg/dg.js
+const config = require("../../Config/config")
 Page({
   data:{
     addressContent:"8-528"
@@ -45,6 +46,7 @@ Page({
   return true
   },
 formSubmit:function(e){
+  const that = this;
   if(wx.getStorageSync('isregister') !=  0){
     //console.log(e.detail.startAdd.value);
     var startAdd = e.detail.value.startAdd
@@ -72,7 +74,7 @@ formSubmit:function(e){
               icon:'success',
               duration:1500
             })
-            this.setData({
+            that.setData({
               addressContent:"8-528"
             })
         }

@@ -1,4 +1,5 @@
 // pages/orderSearch/orderSearch.js
+const config = require("../../Config/config")
 Page({
 
   /**
@@ -25,11 +26,6 @@ getMyFavorites:function(){
     let obj=wx.getStorageSync(keys[i]);
     myList.push(obj); 
   }
-  //更新列表
-  this.setData({
-   orderList:myList,
-    num:num
-  });
 },
 goToDetail:function(e){
   let id=e.currentTarget.dataset.id;
@@ -48,7 +44,30 @@ goToDetail:function(e){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.showLoading({
+      title: '加载中',
+      })
+    setTimeout(function () {
+      wx.hideLoading()
+      }, 700)
+    const that = this;
+    wx.request({
+      url: config.HTTP_URL+config.SearchGrapOrder_URL,
+      method:"POST",
+      header:{
+        'content-type':'application/json',
+      },
+      data:{
+        grapuser_id:wx.getStorageSync('userId')//抢单者的userid
+      },
+      success(e){
+        console.log(e)
+        that.setData({
+          orderList:e.data.graporders,
+           num:e.data.graporders.length
+         });
+      }
+    })
   },
 
   /**

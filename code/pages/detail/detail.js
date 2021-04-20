@@ -4,8 +4,9 @@ const config = require("../../Config/config")
 Page({
   //添加到已强订单中
   addFavorites: function(options){
+    const that =this;
     let order=this.data.order;//获取当前订单 
-    wx.setStorageSync(order.id, order);//添加到本地缓存
+    console.log(order)
     wx.request({
       url: config.HTTP_URL+config.GrapOrder_URL,
       method:"POST",
@@ -14,25 +15,73 @@ Page({
       },
       data:{
         id:order.id,
-        type:order.type,
-        state:order.state,
-        userid:order.userid,
-        grapUserid:""//抢单者的userid
+        grapUserid:wx.getStorageSync('userId')//抢单者的userid
+      },
+      success(e){
+        console.log(e)
+        if(e.data.result=="success"){
+          that.setData({
+            isAdd:true
+          })
+          wx.showToast({
+            title: '5分钟后将不能取消订单！',
+            icon: 'none',
+            duration: 3000
+          })
+        }else{
+          wx.showToast({
+            title: '抢单失败！',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail(e){
+        wx.showToast({
+          title: '请检查网络！',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
-    this.setData({isAdd:true});//更新按钮显示
   },
   //取消抢单
   cancelFavorites:function(){
-    let order=this.data.order;
-    wx.removeStorageSync(order.id);//从本地缓存 删除
-    this.setData({isAdd:false});
+    const that =this;
+    let order=this.data.order;//获取当前订单
+    wx.request({
+      url: config.HTTP_URL+config.CancelGrapOrder_URL,
+      method:"POST",
+      header:{
+        'content-type':'application/json',
+      },
+      data:{
+        id:order.id,
+        grapUserid:wx.getStorageSync('userId')//抢单者的userid
+      },
+      success(e){
+        console.log(e)
+        if(e.data.result=="success"){
+          that.setData({
+            isAdd:false
+          })
+        }else{
+          if(e.data.time == "over"){
+            wx.showToast({
+              title: '您抢单时间已经超过5分钟，不能取消订单！',
+              icon: 'none',
+              duration: 3000
+            })
+          }
+        }
+      }
+    })
   },
   /**
    * 页面的初始数据
    */
   data: {
-
+      
   },
 
   /**
@@ -47,13 +96,6 @@ Page({
    //检查当前订单是否在已接单中
    var order=wx.getStorageInfoSync(id);
   //已存在 
-   if(order !=''){
-  this.setData({isAdd:false})
-   }
-   //不存在
-   else{
-     this.setData({isAdd:true})
-   }
   },
 
   /**
@@ -67,7 +109,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.showLoading({
+      title: '加载中',
+      })
+    setTimeout(function () {
+      wx.hideLoading()
+      }, 700)
+    let order=this.data.order;
+    const that = this;
+    wx.request({
+      url: config.HTTP_URL+config.OrderState_URL,
+      method:"POST",
+      header:{
+        'content-type':'application/json',
+      },
+      data:{
+        id:order.id,
+      },
+      success(e){
+        console.log(e)
+        if(e.data.state){
+            that.setData({isAdd:e.data.state})
+        }
+      }
+    })
   },
 
   /**
