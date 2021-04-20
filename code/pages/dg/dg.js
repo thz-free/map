@@ -1,5 +1,5 @@
 // pages/dg/dg.js
-var config=require("../../Config/config")
+const config = require("../../Config/config")
 Page({
   data:{
     addressContent:"8-528"
@@ -46,6 +46,7 @@ Page({
   return true
   },
 formSubmit:function(e){
+  const that = this;
   if(wx.getStorageSync('isregister') !=  0){
     //console.log(e.detail.startAdd.value);
     var startAdd = e.detail.value.startAdd
@@ -73,10 +74,7 @@ formSubmit:function(e){
               icon:'success',
               duration:1500
             })
-            wx.switchTab({
-              url: '../index/index',
-            })
-            this.setData({
+            that.setData({
               addressContent:"8-528"
             })
         }
