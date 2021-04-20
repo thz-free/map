@@ -1,5 +1,4 @@
 // pages/publish/publish.js
-const config = require("../../Config/config")
 Page({
 
   /**
@@ -13,25 +12,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //  //获取已接订单列表
-    //  this.getMyFavorites();
+     //获取已接订单列表
+     this.getMyFavorites();
   },
-// //获取已抢订单列表
-// getMyFavorites:function(){
-//   let info=wx.getStorageInfoSync();//读取本地缓存信息
-//   let keys=info.keys; //获取全部keys信息
-//   let num=keys.length;//获取已接订单数量
-//   let myList=[];
-//   for(var i=0;i<num;i++){
-//     let obj=wx.getStorageSync(keys[i]);
-//     myList.push(obj); 
-//   }
-//   //更新列表
-//   // this.setData({
-//   //  orderList:myList,
-//   //   num:num
-//   // });
-// },
+//获取已抢订单列表
+getMyFavorites:function(){
+  let info=wx.getStorageInfoSync();//读取本地缓存信息
+  let keys=info.keys; //获取全部keys信息
+  let num=keys.length;//获取已接订单数量
+  let myList=[];
+  for(var i=0;i<num;i++){
+    let obj=wx.getStorageSync(keys[i]);
+    myList.push(obj); 
+  }
+  //更新列表
+  this.setData({
+   orderList:myList,
+    num:num
+  });
+},
 goToDetail:function(e){
   let id=e.currentTarget.dataset.id;
   wx.navigateTo({
@@ -49,27 +48,7 @@ goToDetail:function(e){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.showLoading({
-      title: '加载中',
-      })
-    setTimeout(function () {
-      wx.hideLoading()
-      }, 700)
-    var that = this;
-    wx.request({
-      url: config.HTTP_URL+config.SelectAllOrder_URL,
-      method:"POST",
-      data:{
-        userid:wx.getStorageSync('userId')
-      },
-      success(e){
-        console.log(e)
-        that.setData({
-          orderList:e.data.orders,
-           num:e.data.orders.length
-         });
-      }
-    })
+
   },
 
   /**

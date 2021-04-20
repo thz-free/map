@@ -9,13 +9,10 @@ import com.example.map.domain.orderinfo;
 import com.example.map.service.DbInfoService;
 import com.example.map.service.DgInfoService;
 import com.example.map.service.DnInfoService;
-import com.example.map.service.OrderInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @program: map
@@ -32,8 +29,6 @@ public class DnDbDgController {
     private DgInfoService dgInfoService;
     @Autowired
     private DnInfoService dnInfoService;
-    @Autowired
-    private OrderInfoService orderInfoService;
 
     @RequestMapping(value = {"/setDbInfo"},method =RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public String setDbInfoController(@RequestBody(required = false) dbinfo dbinfo1) throws Exception {
@@ -82,26 +77,7 @@ public class DnDbDgController {
 //查询订单
     @GetMapping("/findByType")
     public orderinfo findByType(int type) throws Exception {
+
         return dbInfoService.findByType(type);
-    }
-
-    //查询此时被抢订单
-    public orderinfo findById(int id) throws Exception{
-        orderinfo orderinfo = orderInfoService.selectOrderInfo(id);
-        return orderinfo;
-    }
-
-    //查询用户所有订单
-    @RequestMapping(value = "/selectAllOrder",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public String selectAllOrder(@RequestBody JSONObject jsonParam){
-        JSONObject jsonObject = new JSONObject();
-        System.out.println(jsonParam.get("userid"));
-        try {
-            List<orderinfo> list = orderInfoService.selectAllOrder((Integer)jsonParam.get("userid"));
-            jsonObject.put("orders",list);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return jsonObject.toJSONString();
     }
 }
