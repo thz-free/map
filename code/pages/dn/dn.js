@@ -1,5 +1,4 @@
 // pages/dn/dn.js
-const config = require("../../Config/config")
 Page({
   data:{
     addressContent:"8-528"

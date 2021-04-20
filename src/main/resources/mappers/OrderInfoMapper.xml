@@ -7,20 +7,4 @@
     <insert id="setOrderInfo" parameterType="orderinfo">
         INSERT INTO orderinfo (dbaffairs,dbaddress,dbtime) VALUES (#{dbaffairs},#{dbaddress},#{dbtime})
     </insert>
-    <!--根据id查询订单-->
-    <select id="selectOrderInfo" parameterType="Integer" resultType="orderinfo">
-        select * from orderinfo where id=#{id}
-    </select>
-    <!--查询用户所有订单-->
-    <select id="selectAllOrder" resultType="orderinfo">
-        select * from orderinfo where user_id=#{user_id}
-    </select>
-    <!--更新订单状态-->
-    <update id="updateOrderState" parameterType="orderinfo">
-        update orderinfo set state=#{state},grapuser_id=#{grapuser_id},time=#{time} where id=#{id}
-    </update>
-    <!--查询用户所有抢单-->
-    <select id="selectGrapOrder" resultType="orderinfo">
-        select * from orderinfo where grapuser_id=#{grapuser_id}
-    </select>
 </mapper>
