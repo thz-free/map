@@ -1,12 +1,13 @@
+const config = require('../../Config/config');
 // pages/order/order.js
 var common=require('../../utils/common')
 Page({
-
+     
   /**
    * 页面的初始数据
    */
   data: {
-
+       orderList:{}
   },
 goToDetail:function(e){
   //获取携带的data-id数据
@@ -23,7 +24,7 @@ goToDetail:function(e){
 //获取列表
 let list = common.getOrderList()
 //更新列表数据
-this.setData({orderList:list})
+// this.setData({orderList:list})
   },
 
   /**
@@ -32,7 +33,33 @@ this.setData({orderList:list})
   onReady: function () {
 
   },
-
+  
+  dn:  function(e){
+    const that = this;
+    var str=e.currentTarget.dataset.id;
+    console.log(str);
+    wx.request({
+      url: config.HTTP_URL+config.FindByType_URL,
+      data:{
+        type:str
+      },
+      method:'GET',
+      header:{
+        'content-type':'application/json',
+      },
+      success(res)
+      {
+        console.log(res)
+       
+        that.setData(
+          {
+            orderList:res
+          }
+        )
+      }
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面显示
    */

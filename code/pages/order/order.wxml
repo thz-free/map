@@ -1,13 +1,13 @@
 <!--pages/order/order.wxml-->
 <view class="head">
   <view class="function">
-   <text class="font">代拿</text>
+   <text class="font" bindtap="dn" data-id="0">代拿</text>
   </view>
   <view class="function">
-    <text class="font">代购</text>
+    <text class="font" bindtap="dg" bindtap="dn" data-id="1">代购</text>
   </view >
   <view class="function">
-    <text class="font">代办</text>
+    <text class="font" bindtap="db" bindtap="dn" data-id="2">代办</text>
   </view>
 </view>
 <view class="container_1">
