@@ -1,8 +1,11 @@
 // pages/dn/dn.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 var config=require("../../Config/config")
 >>>>>>> parent of 540d0bf (Revert "Merge branch 'main' of https://github.com/thz-free/map into main")
+=======
+>>>>>>> parent of d16c637 (抢单)
 Page({
   data:{
     addressContent:"8-528"
