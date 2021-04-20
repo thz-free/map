@@ -35,6 +35,7 @@ orderSearch:function(e){
     url: '/pages/orderSearch/orderSearch',
   })
 },
+//已接订单
 publish:function(e){
   wx.navigateTo({
     url: '/pages/publish/publish',

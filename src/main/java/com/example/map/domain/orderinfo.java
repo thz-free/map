@@ -19,17 +19,25 @@ public class orderinfo implements Serializable {
     private Boolean state;
     private int user_id;
     private int addressinfo_id;
+    private Integer grapuser_id;
+    private Long time;
+    private String content;
 
-    @Override
-    public String toString() {
-        return "orderinfo{" +
-                "id=" + id +
-                ", type=" + type +
-                ", title='" + title + '\'' +
-                ", state=" + state +
-                ", user_id=" + user_id +
-                ", addressinfo_id=" + addressinfo_id +
-                '}';
+    public orderinfo(){}
+
+    public orderinfo(int id, Boolean state, Integer grapuser_id,Long time) {
+        this.id = id;
+        this.state = state;
+        this.grapuser_id = grapuser_id;
+        this.time = time;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getId() {
@@ -78,5 +86,36 @@ public class orderinfo implements Serializable {
 
     public void setAddressinfo_id(int addressinfo_id) {
         this.addressinfo_id = addressinfo_id;
+    }
+
+    public Integer getGrapuser_id() {
+        return grapuser_id;
+    }
+
+    public void setGrapuser_id(Integer grapuser_id) {
+        this.grapuser_id = grapuser_id;
+    }
+
+    public Long getTime() {
+        return time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "orderinfo{" +
+                "id=" + id +
+                ", type=" + type +
+                ", title='" + title + '\'' +
+                ", state=" + state +
+                ", user_id=" + user_id +
+                ", addressinfo_id=" + addressinfo_id +
+                ", grapuser_id=" + grapuser_id +
+                ", time=" + time +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

@@ -1,6 +1,6 @@
 <!--pages/detail/detail.wxml-->
 <view class="container" wx:if="{{order.id}}">
   <view class="content">{{order.content}}</view>
-  <button wx:if='{{isAdd}}' plain bindtap='cancelFavorites'>已接单</button>
+  <button wx:if='{{isAdd}}' plain bindtap='cancelFavorites'>取消接单</button>
   <button wx:else plain bindtap='addFavorites'>接单</button>
 </view>
