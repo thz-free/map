@@ -1,9 +1,15 @@
 // pages/dg/dg.js
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
 var config=require("../../Config/config")
 >>>>>>> parent of 540d0bf (Revert "Merge branch 'main' of https://github.com/thz-free/map into main")
+=======
+>>>>>>> parent of d16c637 (抢单)
+=======
+>>>>>>> parent of d16c637 (抢单)
 =======
 >>>>>>> parent of d16c637 (抢单)
 Page({
@@ -81,11 +87,17 @@ formSubmit:function(e){
             })
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 =======
             wx.switchTab({
               url: '../index/index',
             })
 >>>>>>> parent of 540d0bf (Revert "Merge branch 'main' of https://github.com/thz-free/map into main")
+=======
+>>>>>>> parent of d16c637 (抢单)
+=======
+>>>>>>> parent of d16c637 (抢单)
 =======
 >>>>>>> parent of d16c637 (抢单)
             this.setData({

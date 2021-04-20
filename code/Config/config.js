@@ -1,10 +1,18 @@
 module.exports={
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   HTTP_URL:"http://192.168.1.101:8080",
 =======
   HTTP_URL:"http://10.31.102.224:8080",
 >>>>>>> parent of 540d0bf (Revert "Merge branch 'main' of https://github.com/thz-free/map into main")
+=======
+  HTTP_URL:"http://192.168.1.101:8080",
+>>>>>>> parent of d16c637 (抢单)
+=======
+  HTTP_URL:"http://192.168.1.101:8080",
+>>>>>>> parent of d16c637 (抢单)
 =======
   HTTP_URL:"http://192.168.1.101:8080",
 >>>>>>> parent of d16c637 (抢单)
