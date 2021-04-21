@@ -81,7 +81,9 @@ public class DnDbDgController {
     }
 //查询订单
     @GetMapping("/findByType")
-    public orderinfo findByType(int type) throws Exception {
+    public List<orderinfo> findByType(int type) throws Exception {
+        System.out.println(type);
+        System.out.println(dbInfoService.findByType(type));
         return dbInfoService.findByType(type);
     }
 

@@ -6,6 +6,8 @@ import com.example.map.domain.orderinfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface IDbInfoDao {
@@ -16,5 +18,5 @@ public interface IDbInfoDao {
     //查询代办事件
     String findByIdDbaffairs(int id) throws Exception;
     //查询代拿
-    orderinfo findByType(int type)throws Exception;
+    List<orderinfo> findByType(int type)throws Exception;
 }

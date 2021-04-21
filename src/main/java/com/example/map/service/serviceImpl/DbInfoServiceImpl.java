@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @program: map
  * @description:
@@ -39,7 +41,7 @@ public class DbInfoServiceImpl implements DbInfoService {
     }
 
     @Override
-    public orderinfo findByType(int type) throws Exception {
+    public List<orderinfo> findByType(int type) throws Exception {
         return dbInfoDao.findByType(type);
     }
 }

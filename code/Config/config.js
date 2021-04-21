@@ -13,6 +13,7 @@ module.exports={
   setDnInfo_URL:"/setDnInfo",
   setDbInfo_URL:"/setDbInfo",
   GrapOrder_URL:"/grapOrder",
+  FindByType_URL:"/findByType",
   CancelGrapOrder_URL:"/cancelGrapOrder",
   SearchGrapOrder_URL:"/searchGrapOrder",
   OrderState_URL:"/orderState",

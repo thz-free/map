@@ -53,7 +53,8 @@ let list = common.getOrderList()
        
         that.setData(
           {
-            orderList:res
+            listLength:res.data.length,
+            orderList:res.data
           }
         )
       }
@@ -64,6 +65,27 @@ let list = common.getOrderList()
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const that = this;
+    wx.request({
+      url: config.HTTP_URL+config.FindByType_URL,
+      data:{
+        type:0
+      },
+      method:'GET',
+      header:{
+        'content-type':'application/json',
+      },
+      success(res)
+      {
+        console.log(res)
+        that.setData(
+          {
+            listLength:res.data.length,
+            orderList:res.data
+          }
+        )
+      }
+    })
     if(wx.getStorageSync('isregister') ==  0){
       wx.showModal({
         title: '提示',

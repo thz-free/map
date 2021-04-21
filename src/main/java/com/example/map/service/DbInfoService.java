@@ -3,6 +3,8 @@ package com.example.map.service;
 import com.example.map.domain.dbinfo;
 import com.example.map.domain.orderinfo;
 
+import java.util.List;
+
 public interface DbInfoService {
     void setDbInfo(dbinfo dbInfo)throws Exception;
     //设置订单
@@ -10,5 +12,5 @@ public interface DbInfoService {
     //查询代办事件
     String findByIdDbaffairs(int id) throws Exception;
     //查询代拿
-    orderinfo findByType(int type)throws Exception;
+    List<orderinfo> findByType(int type)throws Exception;
 }
