@@ -93,7 +93,7 @@ formSubmit:function(e){
               'content-type':'application/json',       
               },
               success(res){
-                //console.log("用户信息:",res)
+                console.log("用户信息:",res)
                 const data = res.data.userinfo;
                 wx.setStorageSync('userId', data.userid);
                 //console.log("获取的数据",res)

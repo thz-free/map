@@ -44,6 +44,7 @@ public class DnDbDgController {
         orderinfo1.setType(0);
         orderinfo1.setState(false);
         orderinfo1.setTitle(dbinfo1.getDbaffairs());
+        orderinfo1.setUser_id(dbinfo1.getUser_id());
         dbInfoService.setOrderInfo(orderinfo1);
         System.out.println("xinxi:"+dbinfo1);
         result.put("message","代办订单发布成功");
@@ -60,6 +61,7 @@ public class DnDbDgController {
         orderinfo1.setType(1);
         orderinfo1.setState(false);
         orderinfo1.setTitle(dginfo1.getBuyThings());
+        orderinfo1.setUser_id(dginfo1.getUser_id());
         dbInfoService.setOrderInfo(orderinfo1);
         result.put("message","代购订单发布成功");
         log.info(result.toJSONString());
@@ -74,6 +76,7 @@ public class DnDbDgController {
         orderinfo1.setType(2);
         orderinfo1.setState(false);
         orderinfo1.setTitle(dninfo1.getDeliveryaddress());
+        orderinfo1.setUser_id(dninfo1.getUser_id());
         dbInfoService.setOrderInfo(orderinfo1);
         result.put("message","代拿订单发布成功");
         log.info(result.toJSONString());

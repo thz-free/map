@@ -18,7 +18,7 @@ public class dginfo implements Serializable {
     private String buyThings;
     private String buyaddress;
     private String deliveryaddress;
-    private int dginfo_id;
+    private int user_id;
 
     @Override
     public String toString() {
@@ -27,34 +27,8 @@ public class dginfo implements Serializable {
                 ", buyThings='" + buyThings + '\'' +
                 ", buyaddress='" + buyaddress + '\'' +
                 ", deliveryaddress='" + deliveryaddress + '\'' +
-                ", dginfo_id=" + dginfo_id +
+                ", user_id=" + user_id +
                 '}';
-    }
-
-    public String getDeliveryaddress() {
-        return deliveryaddress;
-    }
-
-    public void setDeliveryaddress(String deliveryaddress) {
-        this.deliveryaddress = deliveryaddress;
-    }
-
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        dginfo dginfo = (dginfo) o;
-        return id == dginfo.id &&
-                dginfo_id == dginfo.dginfo_id &&
-                Objects.equals(buyThings, dginfo.buyThings) &&
-                Objects.equals(buyaddress, dginfo.buyaddress);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, buyThings, buyaddress, dginfo_id);
     }
 
     public int getId() {
@@ -81,11 +55,19 @@ public class dginfo implements Serializable {
         this.buyaddress = buyaddress;
     }
 
-    public int getDginfo_id() {
-        return dginfo_id;
+    public String getDeliveryaddress() {
+        return deliveryaddress;
     }
 
-    public void setDginfo_id(int dginfo_id) {
-        this.dginfo_id = dginfo_id;
+    public void setDeliveryaddress(String deliveryaddress) {
+        this.deliveryaddress = deliveryaddress;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }

@@ -18,7 +18,8 @@ public class dbinfo implements Serializable {
     private String dbaffairs;
     private String dbaddress;
     private String dbtime;
-    private int dbinfo_id;
+    private int user_id;
+
 
     @Override
     public String toString() {
@@ -27,32 +28,8 @@ public class dbinfo implements Serializable {
                 ", dbaffairs='" + dbaffairs + '\'' +
                 ", dbaddress='" + dbaddress + '\'' +
                 ", dbtime='" + dbtime + '\'' +
-                ", dbinfo_id=" + dbinfo_id +
+                ", user_id=" + user_id +
                 '}';
-    }
-
-    public int getDbinfo_id() {
-        return dbinfo_id;
-    }
-
-    public void setDbinfo_id(int dbinfo_id) {
-        this.dbinfo_id = dbinfo_id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        dbinfo dbinfo = (dbinfo) o;
-        return id == dbinfo.id &&
-                Objects.equals(dbaffairs, dbinfo.dbaffairs) &&
-                Objects.equals(dbaddress, dbinfo.dbaddress) &&
-                Objects.equals(dbtime, dbinfo.dbtime);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, dbaffairs, dbaddress, dbtime);
     }
 
     public int getId() {
@@ -85,5 +62,13 @@ public class dbinfo implements Serializable {
 
     public void setDbtime(String dbtime) {
         this.dbtime = dbtime;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }

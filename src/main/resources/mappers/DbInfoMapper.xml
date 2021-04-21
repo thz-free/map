@@ -5,11 +5,11 @@
 <mapper namespace="com.example.map.dao.IDbInfoDao">
     <!--存储收货地址数据-->
     <insert id="setDbInfo" parameterType="dbinfo">
-        INSERT INTO dbinfo (dbaffairs,dbaddress,dbtime) VALUES (#{dbaffairs},#{dbaddress},#{dbtime})
+        INSERT INTO dbinfo (dbaffairs,dbaddress,dbtime,user_id) VALUES (#{dbaffairs},#{dbaddress},#{dbtime},#{user_id})
     </insert>
 
     <insert id="setOrderInfo" parameterType="orderinfo">
-        INSERT INTO orderinfo (type,title,state) VALUES (#{type},#{title},#{state})
+        INSERT INTO orderinfo (type,title,state,user_id) VALUES (#{type},#{title},#{state},#{user_id})
     </insert>
     <select id="findByType" resultType="orderinfo">select * from orderinfo where type =#{type}</select>
 

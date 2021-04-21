@@ -18,7 +18,7 @@ public class dninfo implements Serializable {
     private String image;
     private String kdAddress;
     private String deliveryaddress;
-    private int dninfo_id;
+    private int user_id;
 
     @Override
     public String toString() {
@@ -27,34 +27,8 @@ public class dninfo implements Serializable {
                 ", image='" + image + '\'' +
                 ", kdAddress='" + kdAddress + '\'' +
                 ", deliveryaddress='" + deliveryaddress + '\'' +
-                ", dninfo_id=" + dninfo_id +
+                ", user_id=" + user_id +
                 '}';
-    }
-
-    public String getDeliveryaddress() {
-        return deliveryaddress;
-    }
-
-    public void setDeliveryaddress(String deliveryaddress) {
-        this.deliveryaddress = deliveryaddress;
-    }
-
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        dninfo dninfo = (dninfo) o;
-        return id == dninfo.id &&
-                dninfo_id == dninfo.dninfo_id &&
-                Objects.equals(image, dninfo.image) &&
-                Objects.equals(kdAddress, dninfo.kdAddress);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, image, kdAddress, dninfo_id);
     }
 
     public int getId() {
@@ -81,11 +55,19 @@ public class dninfo implements Serializable {
         this.kdAddress = kdAddress;
     }
 
-    public int getDninfo_id() {
-        return dninfo_id;
+    public String getDeliveryaddress() {
+        return deliveryaddress;
     }
 
-    public void setDninfo_id(int dninfo_id) {
-        this.dninfo_id = dninfo_id;
+    public void setDeliveryaddress(String deliveryaddress) {
+        this.deliveryaddress = deliveryaddress;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }

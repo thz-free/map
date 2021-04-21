@@ -38,6 +38,7 @@ formSubmit:function(e){
     var startAdd = e.detail.value.startAdd
     var time = e.detail.value.time
     var name=e.detail.value.name
+    var userId=wx.getStorageSync('userId')
     if(this.checkStartAddress(startAdd) && 
     this.checkNameChange(name) && this.checkTimeChange(time)){
       wx.request({
@@ -46,7 +47,8 @@ formSubmit:function(e){
         //这里是要携带的参数  
         dbaffairs:name,
         dbtime:time,
-            dbaddress:startAdd,    
+        dbaddress:startAdd,
+        user_id:userId,    
         },              
         method:'POST',              
         header:{                
