@@ -15,20 +15,38 @@ import java.util.Objects;
  */
 public class dninfo implements Serializable {
     private int id;
-    private String image;
     private String kdAddress;
     private String deliveryaddress;
     private int user_id;
+    private int money;
+    private String dnNumber;
 
     @Override
     public String toString() {
         return "dninfo{" +
-                "id=" + id +
-                ", image='" + image + '\'' +
+                "id=" + id + '\'' +
                 ", kdAddress='" + kdAddress + '\'' +
                 ", deliveryaddress='" + deliveryaddress + '\'' +
                 ", user_id=" + user_id +
+                ", money=" + money +
+                ", dnNumber='" + dnNumber + '\'' +
                 '}';
+    }
+
+    public String getDnNumber() {
+        return dnNumber;
+    }
+
+    public void setDnNumber(String dnNumber) {
+        this.dnNumber = dnNumber;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public int getId() {
@@ -37,14 +55,6 @@ public class dninfo implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getKdAddress() {

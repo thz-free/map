@@ -28,7 +28,7 @@ goToDetail:function(e){
     wx.request({
       url: config.HTTP_URL+config.FindByType_URL,
       data:{
-        type:0
+        type:2
       },
       method:'GET',
       header:{

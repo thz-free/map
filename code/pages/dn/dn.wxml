@@ -20,10 +20,13 @@
         <input name="destinationAdd"  value="{{addressContent}}" type="text" class="input"  bindblur="destinationAddress"/>
       </view>
     </view>
-    <view class="dn">
-      <text class="label">上传快递信息截图\n</text>
-      <button bindtap="chooseImage">选择图片</button>
-      <image src="{{src}}" mode="widthFix"></image>
+    <view>
+      <text class="label">提取码\n\n</text>
+      <input name="dnNumber"  placeholder="请输入快递提取码" type="text" class="input"  bindblur="destinationAddress"/>
+    </view>
+    <view>
+      <text class="label">酬劳\n\n</text>
+      <input name="money"  placeholder="请输入酬劳（元）" type="text" class="input"  bindblur="destinationAddress"/>
     </view>
     <button form-type="submit">提交</button>
   </view>

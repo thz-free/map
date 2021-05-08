@@ -3,8 +3,11 @@
 <text>已发布订单（{{num}}）</text>
 <!--已接单列表-->
 <view id='order-list'>
-  <view class="list-item" wx:for="{{orderList}}" wx:for-item="order" wx:key="order.id">
-    <text class="order-title" bindtap="goToDetail" data-id='{{order.id}}'>{{order.title}}</text>
+  <view wx:if="{{order.type==2}}" class="list-item" wx:for="{{orderList}}" wx:for-item="order" wx:key="order.id">
+    <text class="order-title" bindtap="goToDetail" data-id='{{order.id}}'>{{order.title}} 酬劳:{{order.money}}元 提取码:{{order.dnNumber}}</text>
+  </view>
+  <view wx:if="{{order.type!=2}}" class="list-item" wx:for="{{orderList}}" wx:for-item="order" wx:key="order.id">
+    <text class="order-title" bindtap="goToDetail" data-id='{{order.id}}'>{{order.title}} 酬劳:{{order.money}}元</text>
   </view>
 </view>
 </view>

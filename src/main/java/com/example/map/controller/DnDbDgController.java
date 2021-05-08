@@ -45,6 +45,9 @@ public class DnDbDgController {
         orderinfo1.setState(false);
         orderinfo1.setTitle(dbinfo1.getDbaffairs());
         orderinfo1.setUser_id(dbinfo1.getUser_id());
+        orderinfo1.setMoney(dbinfo1.getMoney());
+        String content = dbinfo1.getDbtime()+"去"+dbinfo1.getDbaddress()+dbinfo1.getDbaffairs();
+        orderinfo1.setContent(content);
         dbInfoService.setOrderInfo(orderinfo1);
         System.out.println("xinxi:"+dbinfo1);
         result.put("message","代办订单发布成功");
@@ -62,6 +65,9 @@ public class DnDbDgController {
         orderinfo1.setState(false);
         orderinfo1.setTitle(dginfo1.getBuyThings());
         orderinfo1.setUser_id(dginfo1.getUser_id());
+        orderinfo1.setMoney(dginfo1.getMoney());
+        String content = dginfo1.getBuyaddress()+"购买"+dginfo1.getBuyThings()+"送到"+dginfo1.getDeliveryaddress();
+        orderinfo1.setContent(content);
         dbInfoService.setOrderInfo(orderinfo1);
         result.put("message","代购订单发布成功");
         log.info(result.toJSONString());
@@ -77,7 +83,11 @@ public class DnDbDgController {
         orderinfo1.setState(false);
         orderinfo1.setTitle(dninfo1.getDeliveryaddress());
         orderinfo1.setUser_id(dninfo1.getUser_id());
-        dbInfoService.setOrderInfo(orderinfo1);
+        orderinfo1.setMoney(dninfo1.getMoney());
+        orderinfo1.setDnNumber(dninfo1.getDnNumber());
+        String content = "去"+dninfo1.getKdAddress()+"拿快递送达"+dninfo1.getDeliveryaddress();
+        orderinfo1.setContent(content);
+        dbInfoService.setOrderInfo2(orderinfo1);
         result.put("message","代拿订单发布成功");
         log.info(result.toJSONString());
         return result.toJSONString();

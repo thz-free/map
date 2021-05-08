@@ -36,6 +36,11 @@ public class DbInfoServiceImpl implements DbInfoService {
     }
 
     @Override
+    public void setOrderInfo2(orderinfo orderInfo) throws Exception {
+        dbInfoDao.setOrderInfo2(orderInfo);
+    }
+
+    @Override
     public String findByIdDbaffairs(int id) throws Exception {
         return dbInfoDao.findByIdDbaffairs(id);
     }

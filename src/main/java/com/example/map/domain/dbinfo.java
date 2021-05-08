@@ -19,6 +19,7 @@ public class dbinfo implements Serializable {
     private String dbaddress;
     private String dbtime;
     private int user_id;
+    private int money;
 
 
     @Override
@@ -29,7 +30,16 @@ public class dbinfo implements Serializable {
                 ", dbaddress='" + dbaddress + '\'' +
                 ", dbtime='" + dbtime + '\'' +
                 ", user_id=" + user_id +
+                ", money=" + money +
                 '}';
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public int getId() {

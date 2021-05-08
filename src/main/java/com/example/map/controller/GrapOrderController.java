@@ -29,6 +29,8 @@ public class GrapOrderController {
         Integer id =  Integer.parseInt(jsonObject.getString("id"));
         try {
             result.put("state",orderInfoService.selectOrderInfo(id).getState());
+            result.put("content",orderInfoService.selectOrderInfo(id).getContent());
+            System.out.println(result);
         } catch (Exception e) {
             e.printStackTrace();
         }

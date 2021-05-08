@@ -5,7 +5,7 @@
 <mapper namespace="com.example.map.dao.IDginfoDao">
     <!--存储收货地址数据-->
     <insert id="setDgInfo" parameterType="dginfo">
-        INSERT INTO dginfo (buyThings,buyaddress,deliveryaddress,user_id) VALUES (#{buyThings},#{buyaddress},#{deliveryaddress},#{user_id})
+        INSERT INTO dginfo (buyThings,buyaddress,deliveryaddress,user_id,money) VALUES (#{buyThings},#{buyaddress},#{deliveryaddress},#{user_id},#{money})
     </insert>
 <!--    &lt;!&ndash;获取收货地址数据&ndash;&gt;-->
 <!--    <select id="getTakeAddress" resultType="TakeAddress">-->

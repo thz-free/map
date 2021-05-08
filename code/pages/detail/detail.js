@@ -110,10 +110,12 @@ Page({
         if(e.data.state){
             that.setData({
               isAdd:e.data.state,
-              content:content,
               id:id
             })
         }
+        that.setData({
+          content:e.data.content
+        })
       }
     })
    //检查当前订单是否在已接单中

@@ -9,6 +9,8 @@ public interface DbInfoService {
     void setDbInfo(dbinfo dbInfo)throws Exception;
     //设置订单
     void  setOrderInfo(orderinfo orderInfo)throws Exception;
+    //设置代拿订单
+    void  setOrderInfo2(orderinfo orderInfo)throws Exception;
     //查询代办事件
     String findByIdDbaffairs(int id) throws Exception;
     //查询代拿

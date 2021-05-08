@@ -55,6 +55,8 @@ formSubmit:function(e){
     var startAdd = e.detail.value.startAdd
     var destinationAdd = e.detail.value.destinationAdd
     var userId=wx.getStorageSync('userId')
+    var money=e.detail.value.money
+    var dnNumber=e.detail.value.dnNumber
     var that = this;
     if(this.checkStartAddress(startAdd) && this.checkDestinationAddress(destinationAdd)){
       wx.request({
@@ -63,7 +65,9 @@ formSubmit:function(e){
         //这里是要携带的参数  
             kdAddress:startAdd,
             deliveryaddress:destinationAdd,
-            user_id:userId,    
+            user_id:userId,  
+            money:money,
+            dnNumber:dnNumber  
         },              
         method:'POST',              
         header:{                

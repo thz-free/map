@@ -53,6 +53,7 @@ formSubmit:function(e){
     var destinationAdd = e.detail.value.destinationAdd
     var goods=e.detail.value.goods
     var userId=wx.getStorageSync('userId')
+    var money=e.detail.value.money
     console.log(userId)
     console.log(startAdd+"-----"+destinationAdd)
     if(this.checkStartAddress(startAdd) && 
@@ -64,7 +65,8 @@ formSubmit:function(e){
             buyaddress:startAdd,
             buyThings:goods,
             deliveryaddress:destinationAdd,  
-            user_id:userId  
+            user_id:userId,
+            money:money  
         },              
         method:'POST',              
         header:{                

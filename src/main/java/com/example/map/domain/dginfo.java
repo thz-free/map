@@ -19,6 +19,7 @@ public class dginfo implements Serializable {
     private String buyaddress;
     private String deliveryaddress;
     private int user_id;
+    private int money;
 
     @Override
     public String toString() {
@@ -28,7 +29,16 @@ public class dginfo implements Serializable {
                 ", buyaddress='" + buyaddress + '\'' +
                 ", deliveryaddress='" + deliveryaddress + '\'' +
                 ", user_id=" + user_id +
+                ", money=" + money +
                 '}';
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public int getId() {

@@ -39,6 +39,7 @@ formSubmit:function(e){
     var time = e.detail.value.time
     var name=e.detail.value.name
     var userId=wx.getStorageSync('userId')
+    var money=e.detail.value.money
     if(this.checkStartAddress(startAdd) && 
     this.checkNameChange(name) && this.checkTimeChange(time)){
       wx.request({
@@ -48,7 +49,8 @@ formSubmit:function(e){
         dbaffairs:name,
         dbtime:time,
         dbaddress:startAdd,
-        user_id:userId,    
+        user_id:userId, 
+        money:money   
         },              
         method:'POST',              
         header:{                

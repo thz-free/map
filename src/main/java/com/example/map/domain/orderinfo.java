@@ -22,6 +22,8 @@ public class orderinfo implements Serializable {
     private Integer grapuser_id;
     private Long time;
     private String content;
+    private int money;
+    private String dnNumber;
 
     public orderinfo(){}
 
@@ -30,6 +32,22 @@ public class orderinfo implements Serializable {
         this.state = state;
         this.grapuser_id = grapuser_id;
         this.time = time;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public String getDnNumber() {
+        return dnNumber;
+    }
+
+    public void setDnNumber(String dnNumber) {
+        this.dnNumber = dnNumber;
     }
 
     public String getContent() {
@@ -116,6 +134,8 @@ public class orderinfo implements Serializable {
                 ", grapuser_id=" + grapuser_id +
                 ", time=" + time +
                 ", content='" + content + '\'' +
+                ", money=" + money +
+                ", dnNumber='" + dnNumber + '\'' +
                 '}';
     }
 }

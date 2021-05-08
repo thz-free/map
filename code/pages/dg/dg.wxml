@@ -22,6 +22,10 @@
       <view wx:else>
         <input name="destinationAdd"  value="{{addressContent}}" type="text" class="input"  bindblur="destinationAddress"/>
       </view>
+      <view>
+        <text class="label">酬劳\n\n</text>
+        <input name="money"  placeholder="请输入酬劳（元）" type="text" class="input"  bindblur="destinationAddress"/>
+      </view>
     </view>
     <button form-type="submit">提交</button>
   </view>

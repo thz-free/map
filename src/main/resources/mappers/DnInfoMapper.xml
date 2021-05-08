@@ -5,7 +5,7 @@
 <mapper namespace="com.example.map.dao.IDnInfoDao">
     <!--存储收货地址数据-->
     <insert id="setDnInfo" parameterType="dninfo">
-        INSERT INTO dninfo (image,kdAddress,deliveryaddress,user_id) VALUES (#{image},#{kdAddress},#{deliveryaddress},#{user_id})
+        INSERT INTO dninfo (kdAddress,deliveryaddress,user_id,money,dnNumber) VALUES (#{kdAddress},#{deliveryaddress},#{user_id},#{money},#{dnNumber})
     </insert>
 <!--    &lt;!&ndash;获取收货地址数据&ndash;&gt;-->
 <!--    <select id="getTakeAddress" resultType="TakeAddress">-->
