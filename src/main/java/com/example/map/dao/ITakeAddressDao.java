@@ -17,4 +17,6 @@ public interface ITakeAddressDao {
     void updateTakeAddress(TakeAddress takeAddress) throws Exception;
     //删除指定收货地址信息
     void deleteTakeAddress(Integer id)throws Exception;
+    //查询地址
+    TakeAddress findByOrderId(Integer id)throws Exception;
 }

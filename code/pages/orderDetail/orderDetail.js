@@ -1,5 +1,9 @@
 // pages/orderDetail/orderDetail.js
+
+const config = require("../../Config/config")
+
 //引入SDK核心类
+
 Page({
 
   /**
@@ -13,7 +17,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      console.log(options.orderid)
+      const addressid=options.orderid
+      var that=this
+      wx.request({
+        url: config.HTTP_URL+config.findByIdAddress_URL,
+        data:{
+          id:addressid
+        },
+        method:'GET',
+        header:{'content-type':'application/json',},
+        success(res){
+          console.log(res)
+          that.setData({
+            name:res.data.username,
+            adress:res.data.address,
+            phone:res.data.phone
+          })
+               
+        }
+      })
   },
 
   /**

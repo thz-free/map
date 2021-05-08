@@ -28,9 +28,10 @@ getMyFavorites:function(){
   }
 },
 goToDetail:function(e){
-  let id=e.currentTarget.dataset.id;
+  console.log(e)
+  let orderid = e.currentTarget.dataset.orderid;
   wx.navigateTo({
-    url: '../orderDetail/orderDetail?id='+id,
+    url: '../orderDetail/orderDetail?orderid='+orderid,
   })
 },
   /**

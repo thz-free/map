@@ -9,4 +9,6 @@ public interface TakeAddressService {
     List<TakeAddress> getTakeAddress(Integer  userid) throws Exception;
     void updateTakeAddress(TakeAddress takeAddress) throws Exception;
     void deleteTakeAddress(Integer id) throws Exception;
+    //查询地址
+    TakeAddress findByOrderId(Integer id)throws Exception;
 }

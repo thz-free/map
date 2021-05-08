@@ -5,8 +5,7 @@ Page({
   //添加到已强订单中
   addFavorites: function(options){
     const that =this;
-    let order=this.data.order;//获取当前订单 
-    console.log(order)
+    console.log(that.options.orderid)
     wx.request({
       url: config.HTTP_URL+config.GrapOrder_URL,
       method:"POST",
@@ -14,7 +13,7 @@ Page({
         'content-type':'application/json',
       },
       data:{
-        id:order.id,
+        id:that.options.orderid,
         grapUserid:wx.getStorageSync('userId')//抢单者的userid
       },
       success(e){
@@ -48,7 +47,6 @@ Page({
   //取消抢单
   cancelFavorites:function(){
     const that =this;
-    let order=this.data.order;//获取当前订单
     wx.request({
       url: config.HTTP_URL+config.CancelGrapOrder_URL,
       method:"POST",
@@ -56,7 +54,7 @@ Page({
         'content-type':'application/json',
       },
       data:{
-        id:order.id,
+        id:that.options.orderid,
         grapUserid:wx.getStorageSync('userId')//抢单者的userid
       },
       success(e){
@@ -88,13 +86,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   let id=options.id;
-   let result=common.getOrderDetail(id)
-   if(result.code=='200'){
-     this.setData({order:result.order})
-   }
+   let id=options.orderid;
+   let content=options.content;
+   console.log(options)
+   wx.showLoading({
+    title: '加载中',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+      }, 700)
+    const that = this;
+    wx.request({
+      url: config.HTTP_URL+config.OrderState_URL,
+      method:"POST",
+      header:{
+        'content-type':'application/json',
+      },
+      data:{
+        id:id,
+      },
+      success(e){
+        console.log(e)
+        if(e.data.state){
+            that.setData({
+              isAdd:e.data.state,
+              content:content,
+              id:id
+            })
+        }
+      }
+    })
    //检查当前订单是否在已接单中
-   var order=wx.getStorageInfoSync(id);
+
   //已存在 
   },
 
@@ -108,31 +131,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    wx.showLoading({
-      title: '加载中',
-      })
-    setTimeout(function () {
-      wx.hideLoading()
-      }, 700)
-    let order=this.data.order;
-    const that = this;
-    wx.request({
-      url: config.HTTP_URL+config.OrderState_URL,
-      method:"POST",
-      header:{
-        'content-type':'application/json',
-      },
-      data:{
-        id:order.id,
-      },
-      success(e){
-        console.log(e)
-        if(e.data.state){
-            that.setData({isAdd:e.data.state})
-        }
-      }
-    })
+  onShow: function (options) {
+    
   },
 
   /**

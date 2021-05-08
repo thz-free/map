@@ -54,5 +54,10 @@ public class TakeAddressServiceImpl implements TakeAddressService {
         iTakeAddressDao.deleteTakeAddress(id);
     }
 
+    @Override
+    public TakeAddress findByOrderId(Integer id) throws Exception {
+         return iTakeAddressDao.findByOrderId(id);
+    }
+
 
 }

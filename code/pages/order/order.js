@@ -7,64 +7,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-       orderList:{}
+
   },
 goToDetail:function(e){
   //获取携带的data-id数据
-  let id=e.currentTarget.dataset.id;
+  console.log(e)
+  let id=e.currentTarget.dataset.id;//order的id
+  console.log(this.data)
+  console.log(this.data.orderList[id])
   //携带id页面进行页面跳转
   wx.navigateTo({  
-    url: '../detail/detail?id='+id
+    url: '../detail/detail?content='+this.data.orderList[id].content+"&orderid="+e.currentTarget.dataset.orderid
   })
 },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-//获取列表
-let list = common.getOrderList()
-//更新列表数据
-// this.setData({orderList:list})
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-  
-  dn:  function(e){
-    const that = this;
-    var str=e.currentTarget.dataset.id;
-    console.log(str);
-    wx.request({
-      url: config.HTTP_URL+config.FindByType_URL,
-      data:{
-        type:str
-      },
-      method:'GET',
-      header:{
-        'content-type':'application/json',
-      },
-      success(res)
-      {
-        console.log(res)
-       
-        that.setData(
-          {
-            listLength:res.data.length,
-            orderList:res.data
-          }
-        )
-      }
-    })
-  },
-  
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
     const that = this;
     wx.request({
       url: config.HTTP_URL+config.FindByType_URL,
@@ -78,6 +37,7 @@ let list = common.getOrderList()
       success(res)
       {
         console.log(res)
+        
         that.setData(
           {
             listLength:res.data.length,
@@ -106,6 +66,46 @@ let list = common.getOrderList()
         }
       })
     }
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+  
+  dn:  function(e){
+    const that = this;
+    var str=e.currentTarget.dataset.id;
+    console.log(str);
+    wx.request({
+      url: config.HTTP_URL+config.FindByType_URL,
+      data:{
+        type:str
+      },
+      method:'GET',
+      header:{
+        'content-type':'application/json',
+      },
+      success(res)
+      {
+        console.log(res)
+       
+        that.setData(
+          {
+            orderList:res.data
+          }
+        )
+      }
+    })
+  },
+  
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    
   },
 
   /**

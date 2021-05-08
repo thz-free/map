@@ -96,5 +96,10 @@ public class TakeAddressController {
         result.put("method", "request");
         return result.toJSONString();
     }
+    @ResponseBody
+    @RequestMapping(value ="/findByid",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
+    public TakeAddress findById(Integer id) throws Exception {
 
+        return takeAddressService.findByOrderId(id);
+    }
 }

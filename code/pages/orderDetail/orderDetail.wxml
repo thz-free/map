@@ -11,9 +11,9 @@
 </view>
 </view>
 <view class="main">
-  <label>代主姓名:\t\t\t\t\t高燕</label>
+  <label>代主姓名:\t\t\t\t\t{{name}}</label>
   <label>取货地点:\t\t\t\t\t校园物流 </label>
-  <label>送达地点:\t\t\t\t\t8-211 </label>
-  <label>代主联系方式:\t\t\t\t\t15235007641 </label>
+  <label>送达地点:\t\t\t\t\t{{adress}} </label>
+  <label>代主联系方式:\t\t\t\t\t{{phone}} </label>
 </view>
 </view>

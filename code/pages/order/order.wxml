@@ -19,7 +19,7 @@
   <view wx:if="{{listLength==0}}">
     <text>暂无</text>
   </view>
-  <view class="list-item" wx:for="{{orderList}}" wx:for-item="order" wx:key="order.id">
-    <text class="order-title" bindtap="goToDetail" data-id='{{order.id}}'>{{order.title}}</text>
+  <view class="list-item" wx:for="{{orderList}}" wx:for-item="order" wx:key="order.id" >
+    <text class="order-title" bindtap="goToDetail" data-id='{{index}}' data-orderid="{{order.id}}">{{order.title}}</text>
   </view>
 </view>

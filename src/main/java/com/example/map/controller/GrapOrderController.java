@@ -26,7 +26,7 @@ public class GrapOrderController {
     @RequestMapping(value = "/orderState",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public String OrderState(@RequestBody JSONObject jsonObject){
         JSONObject result = new JSONObject();
-        Integer id = (Integer) jsonObject.get("id");
+        Integer id =  Integer.parseInt(jsonObject.getString("id"));
         try {
             result.put("state",orderInfoService.selectOrderInfo(id).getState());
         } catch (Exception e) {
@@ -45,7 +45,7 @@ public class GrapOrderController {
         System.out.println(jsonObject);
         try {
             JSONObject result = new JSONObject();
-            Integer id = (Integer) jsonObject.get("id");
+            Integer id = Integer.parseInt(jsonObject.getString("id"));
             Integer grapuser_id = (Integer) jsonObject.get("grapUserid");
             orderinfo orderinfo = orderInfoService.selectOrderInfo(id);
             synchronized (orderinfo){
@@ -80,7 +80,7 @@ public class GrapOrderController {
         //2.在时间范围内，则将订单的状态变为0，并将抢单者的userid删除，并提醒抢单者已取消和发布者订单已被取消
         try {
             JSONObject result = new JSONObject();
-            Integer id = (Integer) jsonObject.get("id");
+            Integer id = Integer.parseInt(jsonObject.getString("id"));
             Integer grapuser_id = (Integer) jsonObject.get("grapUserid");
             orderinfo orderinfo = orderInfoService.selectOrderInfo(id);
             synchronized (orderinfo){

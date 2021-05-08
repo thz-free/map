@@ -19,4 +19,6 @@
     <delete id="deleteTakeAddress" parameterType="TakeAddress">
         DELETE FROM addressinfo WHERE id = #{id}
     </delete>
+<!--    根据orderid查询-->
+    <select id="findByOrderId" resultType="TakeAddress">select * from addressinfo where id=#{id}</select>
 </mapper>
