@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.map.domain.TakeAddress;
 import com.example.map.domain.Userinfo;
 import com.example.map.domain.dbinfo;
+import com.example.map.service.OrderInfoService;
 import com.example.map.service.TakeAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ public class TakeAddressController {
 
     @Autowired
     private TakeAddressService takeAddressService;
+    @Autowired
+    private OrderInfoService orderInfoService;
 
     /**
      * 存储收货地址信息
@@ -99,7 +102,7 @@ public class TakeAddressController {
     @ResponseBody
     @RequestMapping(value ="/findByid",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
     public TakeAddress findById(Integer id) throws Exception {
-
-        return takeAddressService.findByOrderId(id);
+        System.out.println(takeAddressService.findByOrderId(orderInfoService.selectOrderInfo(id).getUser_id()));
+        return takeAddressService.findByOrderId(orderInfoService.selectOrderInfo(id).getUser_id());
     }
 }

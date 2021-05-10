@@ -17,8 +17,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log(options.orderid)
-      const addressid=options.orderid
+      console.log(options)
+      const addressid=options.id
       var that=this
       wx.request({
         url: config.HTTP_URL+config.findByIdAddress_URL,

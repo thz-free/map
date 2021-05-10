@@ -31,7 +31,7 @@ goToDetail:function(e){
   console.log(e)
   let orderid = e.currentTarget.dataset.orderid;
   wx.navigateTo({
-    url: '../orderDetail/orderDetail?orderid='+orderid,
+    url: '../orderDetail/orderDetail?id='+orderid,
   })
 },
   /**
