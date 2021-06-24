@@ -3,8 +3,6 @@
   <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp2.ssl.cdn.btime.com%2Ft0138d4a847b4148286.jpg%3Fsize%3D640x356&refer=http%3A%2F%2Fp2.ssl.cdn.btime.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620893149&t=46dc76dcf32b183dcdf60943f55b7d3e" class="index-image"></image>
  <!-- main -->
   <view>
-  <view>
-  </view>
     <image src="https://iconfont.alicdn.com/t/0e2179c9-0dff-4b4a-b5f9-a11a26f9613d.png" class="index-function" bindtap="dn"></image>
     <image src="https://iconfont.alicdn.com/t/388eed99-e203-4a96-a48c-118c038b709f.png" class="index-function" bindtap="dg"></image>
     <image src="https://iconfont.alicdn.com/t/d7acc73f-5bc9-474d-9cfc-fa25a0078b0b.png" class="index-function" bindtap="db"></image>
@@ -13,6 +11,16 @@
     <text class="index-text">代拿</text>
     <text class="index-text">代购</text>
     <text class="index-text">代办</text>
+  </view>
+  <view>
+    <image src="https://www.westlake.com.tw/upload/news_list_pic_s/075d7569568b7f1a75bf4fbd7fa00878.jpg" class="index-function" bindtap="swdl"></image>
+    <image src="http://www.68sign.com/upload/download/68sign.com-20184914114940.jpg" class="index-function" bindtap="swzl"></image>
+    <image src="http://img.yao51.com/jiankangtuku/bbbodjghfz.jpeg" class="index-function" bindtap="tzsc"></image>
+  </view>
+  <view>
+    <text class="index-text1">失物招领</text>
+    <text class="index-text1">失物代领</text>
+    <text class="index-text1">跳蚤市场</text>
   </view>
   <!-- foot -->
   <view>

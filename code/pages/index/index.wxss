@@ -18,6 +18,13 @@
   margin: 10rpx 85rpx;
   color: gray;
 }
+.index-text1{
+  overflow: hidden;
+  width: 30%;
+  height: 20rpx;
+  margin: 10rpx 48rpx;
+  color: gray;
+}
 .index-function{
   overflow: hidden;
   width: 150rpx;
